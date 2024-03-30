@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManagementSystem.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="logo.png"
+                HeightRequest="125"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+                Text="Welcome to our Restaurant!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                Padding="0,30" />
+
+
+            <Button
+                x:Name="TakeOutBtn"
+                Text="Take-Out" 
+                Clicked="OnGoToOrderButtonClicked"
+                HorizontalOptions="CenterAndExpand" Padding="0,40"  WidthRequest="400" TextColor="#F3F3F3" BackgroundColor="#BD0B0B" FontSize="20"/>
+
+            <Button
+                x:Name="ReserBtn"
+                Text="Make a Reservation"
+                Clicked="OnReservationButtonClicked"
+                HorizontalOptions="CenterAndExpand" WidthRequest="400" Padding="0,40" Margin="0,0,0,50" BackgroundColor="#BD0B0B" FontSize="20"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

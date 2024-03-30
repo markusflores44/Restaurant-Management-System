@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManagementSystem.Reservation_input"
+             Title="Reservation_input">
+    <VerticalStackLayout>
+        <Label 
+            Text="Book your table here!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20"/>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Customer Name" Padding="10" />
+            <Entry x:Name="nameEntry" Placeholder="Your Full Name" HorizontalOptions="Fill" WidthRequest="400"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Phone Number" Padding="10"/>
+            <Entry x:Name="phoneEntry" Placeholder="(xxx)-xxx-xxxx" WidthRequest="400"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Date" Padding="10"/>
+            <DatePicker x:Name="birthdatePicker" WidthRequest="400" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Time" Padding="10" Margin="20"/>
+            <Picker x:Name="timePicker" WidthRequest="400" Title="Please pick a time slot">
+                <Picker.Items> 
+                    <x:String>10:00-12:00</x:String>
+                    <x:String>12:00-14:00</x:String>
+                    <x:String>14:00-16:00</x:String>
+                    <x:String>16:00-18:00</x:String>
+                </Picker.Items>
+            </Picker>
+        </HorizontalStackLayout>
+        
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
+            <Button Text="Submit" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnSubmitReservationButtonClicked"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
