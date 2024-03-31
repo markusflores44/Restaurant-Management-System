@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManagementSystem.OrderMain"
+             Title="OrderMain">
+    <VerticalStackLayout>
+        <Label 
+            Text="Menu"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="40" Padding="20,50,20,10"/>
+
+        <Picker x:Name="mainPicker" WidthRequest="400" Title="Please select your mains">
+            <Picker.Items>
+                <x:String>Beef Burger</x:String>
+                <x:String>Chicken Burger</x:String>
+                <x:String>Cheese Burger</x:String>
+                <x:String>Turkey Burger</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
+            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
+        </HorizontalStackLayout>
+
+
+    </VerticalStackLayout>
+</ContentPage>
