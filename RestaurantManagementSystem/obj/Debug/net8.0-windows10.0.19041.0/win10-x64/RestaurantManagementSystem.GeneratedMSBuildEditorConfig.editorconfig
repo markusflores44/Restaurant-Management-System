@@ -1,0 +1,79 @@
+is_global = true
+build_property.TargetFramework = net8.0-windows10.0.19041.0
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RestaurantManagementSystem
+build_property.ProjectDir = C:\Users\Miko\Documents\SAIT\TERM 2\CPRG211\Restaurant-Management-System\RestaurantManagementSystem\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Bill.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Bill.xaml
+build_metadata.AdditionalFiles.TargetPath = Bill.xaml
+build_metadata.AdditionalFiles.RelativePath = Bill.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/OrderDisplay.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.OrderDisplay.xaml
+build_metadata.AdditionalFiles.TargetPath = OrderDisplay.xaml
+build_metadata.AdditionalFiles.RelativePath = OrderDisplay.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/OrderMain.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.OrderMain.xaml
+build_metadata.AdditionalFiles.TargetPath = OrderMain.xaml
+build_metadata.AdditionalFiles.RelativePath = OrderMain.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Reservation_confirm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Reservation_confirm.xaml
+build_metadata.AdditionalFiles.TargetPath = Reservation_confirm.xaml
+build_metadata.AdditionalFiles.RelativePath = Reservation_confirm.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Reservation_input.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Reservation_input.xaml
+build_metadata.AdditionalFiles.TargetPath = Reservation_input.xaml
+build_metadata.AdditionalFiles.RelativePath = Reservation_input.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Reservation_order.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Reservation_order.xaml
+build_metadata.AdditionalFiles.TargetPath = Reservation_order.xaml
+build_metadata.AdditionalFiles.RelativePath = Reservation_order.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/Miko/Documents/SAIT/TERM 2/CPRG211/Restaurant-Management-System/RestaurantManagementSystem/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = RestaurantManagementSystem.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
