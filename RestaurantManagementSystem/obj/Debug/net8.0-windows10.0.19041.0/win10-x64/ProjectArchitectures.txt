@@ -1,1 +1,1 @@
-C:\Users\Miko\Documents\SAIT\TERM 2\CPRG211\Restaurant-Management-System\RestaurantManagementSystem\RestaurantManagementSystem.csproj;x64
+C:\Users\kyled\Desktop\Github\Restaurant Management System\RestaurantManagementSystem\RestaurantManagementSystem.csproj;x64
