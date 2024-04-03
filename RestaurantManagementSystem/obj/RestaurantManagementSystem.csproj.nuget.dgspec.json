@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Miko\\Documents\\SAIT\\TERM 2\\CPRG211\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {}
+    "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Miko\\Documents\\SAIT\\TERM 2\\CPRG211\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {
+    "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Miko\\Documents\\SAIT\\TERM 2\\CPRG211\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
         "projectName": "RestaurantManagementSystem",
-        "projectPath": "C:\\Users\\Miko\\Documents\\SAIT\\TERM 2\\CPRG211\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\Miko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Miko\\Documents\\SAIT\\TERM 2\\CPRG211\\Restaurant-Management-System\\RestaurantManagementSystem\\obj\\",
+        "projectPath": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\kyled\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Miko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kyled\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         },
         "net8.0-ios17.2": {
           "targetAlias": "net8.0-ios",
@@ -147,7 +147,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         },
         "net8.0-maccatalyst17.2": {
           "targetAlias": "net8.0-maccatalyst",
@@ -191,7 +191,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         },
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
@@ -234,7 +234,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
