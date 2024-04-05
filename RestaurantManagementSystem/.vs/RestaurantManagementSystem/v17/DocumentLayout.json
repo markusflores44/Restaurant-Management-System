@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\reservation_input.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_input.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\reservation_input.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_input.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\managecustomers.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:managecustomers.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|c:\\users\\kyled\\desktop\\github\\restaurant management system\\restaurantmanagementsystem\\managecustomers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:managecustomers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|c:\\users\\kyled\\desktop\\github\\restaurant management system\\restaurantmanagementsystem\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\orderdisplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:orderdisplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\reservation_order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ordermain.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -35,12 +39,8 @@
       "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_confirm.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\reservation_input.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_input.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\reservation_order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:reservation_order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\orderdisplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5963143B-AA0D-4AEC-95A5-173F12949CC7}|RestaurantManagementSystem.csproj|solutionrelative:orderdisplay.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -62,64 +62,76 @@
               "RelativeToolTip": "MauiProgram.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T23:44:11.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-03T23:44:11.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ManageCustomers.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml.cs",
-              "RelativeDocumentMoniker": "ManageCustomers.xaml.cs",
-              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml.cs",
-              "RelativeToolTip": "ManageCustomers.xaml.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAgwEQAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T23:13:18.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ManageCustomers.xaml",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml",
               "RelativeDocumentMoniker": "ManageCustomers.xaml",
               "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml",
               "RelativeToolTip": "ManageCustomers.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-04-03T21:44:32.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Customer.cs",
-              "RelativeDocumentMoniker": "Customer.cs",
-              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Customer.cs",
-              "RelativeToolTip": "Customer.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABoAAAApAAAA",
+              "DocumentIndex": 2,
+              "Title": "ManageCustomers.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml.cs",
+              "RelativeDocumentMoniker": "ManageCustomers.xaml.cs",
+              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\ManageCustomers.xaml.cs",
+              "RelativeToolTip": "ManageCustomers.xaml.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAgwH0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-03T23:56:21.551Z",
+              "WhenOpened": "2024-04-03T23:13:18.887Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Reservation_input.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml.cs",
+              "RelativeDocumentMoniker": "Reservation_input.xaml.cs",
+              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml.cs",
+              "RelativeToolTip": "Reservation_input.xaml.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwD0AAABzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T01:31:39.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Reservation_input.xaml",
+              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml",
+              "RelativeDocumentMoniker": "Reservation_input.xaml",
+              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml",
+              "RelativeToolTip": "Reservation_input.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-31T03:12:56.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MainPage.xaml.cs",
               "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\MainPage.xaml.cs",
               "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAawHIAAAA1AAAA",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAqwGIAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T21:27:45.258Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "OrderDisplay.xaml",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\OrderDisplay.xaml",
               "RelativeDocumentMoniker": "OrderDisplay.xaml",
@@ -127,12 +139,11 @@
               "RelativeToolTip": "OrderDisplay.xaml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-02T15:13:10.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T15:13:10.297Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "OrderMain.xaml",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\OrderMain.xaml",
               "RelativeDocumentMoniker": "OrderMain.xaml",
@@ -144,31 +155,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Reservation_confirm.xaml",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_confirm.xaml",
               "RelativeDocumentMoniker": "Reservation_confirm.xaml",
               "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_confirm.xaml",
               "RelativeToolTip": "Reservation_confirm.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-03-31T03:12:58.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Reservation_input.xaml",
-              "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml",
-              "RelativeDocumentMoniker": "Reservation_input.xaml",
-              "ToolTip": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_input.xaml",
-              "RelativeToolTip": "Reservation_input.xaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-31T03:12:56.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "Reservation_order.xaml",
               "DocumentMoniker": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\Reservation_order.xaml",
               "RelativeDocumentMoniker": "Reservation_order.xaml",

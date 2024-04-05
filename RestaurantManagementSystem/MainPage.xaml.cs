@@ -41,22 +41,6 @@ namespace RestaurantManagementSystem
         //************BEGIN CUSTOMER METHODS*******************//
 
 
-
-
-
-        //customer class to store customer objects to display in Customer picker wheel
-/*        public class Customer
-        {
-            public int Customer_Num { get; set; }
-            public string Customer_Name { get; set; }
-            
-            public string PhoneNumber { get; set; }
-
-            // Read-only property to display all information
-            public string FullDetails => $"ID: {Customer_Num}, Name: {Customer_Name}, Phone: {PhoneNumber}";
-
-        }
-*/
         // this class holds all methods for retrieving and deleting Database information
         public class DatabaseAccess
         {

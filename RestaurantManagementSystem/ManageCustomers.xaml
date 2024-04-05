@@ -19,36 +19,30 @@
             VerticalOptions="Center" 
             HorizontalOptions="Start"/>
 
-        <!-- Picker wheel and Button to populate/update wheel items -->
-        <Picker x:Name="customerPicker" Title="Click Here To Search for a Customer"></Picker>
 
-        <Button x:Name="load_customer_list"  Text="Load Customer List" Clicked="Load_Picker_Button_Click"  TextColor="Black" FontSize="Small" BackgroundColor="White" WidthRequest="400"/>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Entry x:Name="Customer_nameEntry" Placeholder="Enter First Name" TextColor="White" FontSize="Small" WidthRequest="400"/>
+        </HorizontalStackLayout>
 
-        <Grid ColumnSpacing="5" RowSpacing="10" RowDefinitions="50,50,50,50,50,50,50" ColumnDefinitions="250,250,250,250">
+        
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Entry x:Name="Phone_numberEntry" Placeholder="Enter Phone Number"  TextColor="White" FontSize="Small" WidthRequest="400"/>
+        </HorizontalStackLayout>
 
-            <!-- Buttons for entry of customer -->
-            <!-- User input text field -->
-            <Entry x:Name="Customer_nameEntry" Placeholder="Enter First Name" Grid.Row="0" Grid.Column="0" TextColor="Black" FontSize="Small" BackgroundColor="White"/>
-            <Entry x:Name="Phone_numberEntry" Placeholder="Enter Phone Number" Grid.Row="0" Grid.Column="1" TextColor="Black" FontSize="Small" BackgroundColor="White"/>
-            <!-- Submit Button-->
-            <Button Text="Save New Customer" Clicked="Save_Cust_Button_Click"  Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="Small" BackgroundColor="White"/>
-            <!-- Label to display the saved input -->
-            <Label x:Name="displaycustomerEntry" Text="Saved Confirmation Display~"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextColor="White" FontSize="Small" BackgroundColor="Black"/>
+        
+        <Button Text="Save New Customer" Clicked="Save_Cust_Button_Click"  TextColor="White" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40,40,40,10"/>
+        <Label x:Name="displaycustomerEntry" Text="" TextColor="White" WidthRequest="400" FontSize="20" Margin="0,0,0,100"/>
 
 
-            <Button x:Name="del_button" Text="Delete Customer" Clicked="Delete_Cust_Button_Click"  Grid.Row="4" Grid.Column="0" TextColor="Black" FontSize="Small" BackgroundColor="White"/>
-            <Entry x:Name="del_entry" Placeholder="Enter Customer #"  Grid.Row="4" Grid.Column="1" TextColor="Black" FontSize="Small" BackgroundColor="White"/>
-            <Label x:Name="displaycustomerEntry_del" Text="Delete Confirmation Display~"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" TextColor="White" FontSize="Small" BackgroundColor="Black"/>
-        </Grid>
-
-        <!--  <Picker x:Name="customerPicker" Title="Select a Customer" Focused="Picker_Focused" /> -->
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Select Customer to delete" Padding="10" />
+            <Picker x:Name="customerPicker" HorizontalOptions="Fill" WidthRequest="400" SelectedIndexChanged="CustomerPicker_SelectedIndexChanged" ></Picker>
+        </HorizontalStackLayout>
 
 
-
-
-
-
-
+        
+        <Button x:Name="del_button" Text="Delete Customer" Clicked="Delete_Cust_Button_Click"  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40"/>
+        <Label x:Name="displaycustomerEntry_del" Text=""  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400"/>
 
     </VerticalStackLayout>
 </ContentPage>
