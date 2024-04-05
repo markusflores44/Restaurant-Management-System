@@ -125,10 +125,4 @@ public partial class ManageCustomers : ContentPage
     }
 
 
-
-
-
-
-
-
 }
