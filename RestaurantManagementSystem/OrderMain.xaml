@@ -11,15 +11,22 @@
             FontSize="40" Padding="20,50,20,10"/>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Picker x:Name="menumainsPicker" WidthRequest="400" Title="Please select your mains" Margin="5"></Picker>
-            <Button Text="-" Clicked="OnMinusItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="0" x:Name="ItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="+" Clicked="OnAddItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Picker x:Name="MenuMainsPicker" WidthRequest="400" Title="Please select your mains" Margin="5" SelectedIndexChanged="MenuMainsPicker_SelectedIndexChanged"></Picker>
+            <Button Text="-" Clicked="OnMinusMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="MainsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-            <Label Text="Total Price"></Label>
-            <Label x:Name="totalPrice" Text=""></Label>
+            <Picker x:Name="MenuPopsPicker" WidthRequest="400" Title="Please select your pops" Margin="5" SelectedIndexChanged="MenuPopsPicker_SelectedIndexChanged"></Picker>
+            <Button Text="-" Clicked="OnMinusPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="PopsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Total Price" Padding="10"></Label>
+            <Label x:Name="totalPrice" Text="" Padding="10"></Label>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">

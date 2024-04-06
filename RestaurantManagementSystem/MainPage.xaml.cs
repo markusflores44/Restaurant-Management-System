@@ -20,6 +20,7 @@ namespace RestaurantManagementSystem
         private async void OnGoToOrderButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new OrderMain());
+           
         }
 
         private async void OnAddCustomerButtonClicked(object sender, EventArgs e)

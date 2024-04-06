@@ -30,7 +30,7 @@ public partial class ManageCustomers : ContentPage
         {
             Server = "localhost",
             UserID = "root",
-            Password = "1234",
+            Password = "password",
             Database = "mydb",
         };
         DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
@@ -56,7 +56,7 @@ public partial class ManageCustomers : ContentPage
         {
             Server = "localhost",
             UserID = "root",
-            Password = "1234",
+            Password = "password",
             Database = "mydb",
         };
         DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
@@ -85,7 +85,7 @@ public partial class ManageCustomers : ContentPage
         {
             Server = "localhost",
             UserID = "root",
-            Password = "1234",
+            Password = "password",
             Database = "mydb",
         };
         DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
