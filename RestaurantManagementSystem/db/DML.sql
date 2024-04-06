@@ -84,6 +84,7 @@ DROP TABLE IF EXISTS `mydb`.`Bill` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Bill` (
   `Bill#` INT NOT NULL AUTO_INCREMENT,
+  `Total_Price` DOUBLE,
   PRIMARY KEY (`Bill#`))
 ENGINE = InnoDB;
 

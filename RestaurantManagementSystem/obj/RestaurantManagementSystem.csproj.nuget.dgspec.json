@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {}
+    "C:\\github\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {
+    "C:\\github\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
+        "projectUniqueName": "C:\\github\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
         "projectName": "RestaurantManagementSystem",
-        "projectPath": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\kyled\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kyled\\Desktop\\Github\\Restaurant Management System\\RestaurantManagementSystem\\obj\\",
+        "projectPath": "C:\\github\\Restaurant-Management-System\\RestaurantManagementSystem\\RestaurantManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\lijun\\.nuget\\packages\\",
+        "outputPath": "C:\\github\\Restaurant-Management-System\\RestaurantManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kyled\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lijun\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,11 +38,11 @@
             "targetAlias": "net8.0-android",
             "projectReferences": {}
           },
-          "net8.0-ios17.2": {
+          "net8.0-ios17.0": {
             "targetAlias": "net8.0-ios",
             "projectReferences": {}
           },
-          "net8.0-maccatalyst17.2": {
+          "net8.0-maccatalyst17.0": {
             "targetAlias": "net8.0-maccatalyst",
             "projectReferences": {}
           },
@@ -55,11 +55,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -72,17 +67,30 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )",
+              "version": "[8.0.1, )",
               "autoReferenced": true
+            },
+<<<<<<< Updated upstream
+=======
+            "MySqlConnect": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+>>>>>>> Stashed changes
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             }
           },
           "imports": [
@@ -104,9 +112,9 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         },
-        "net8.0-ios17.2": {
+        "net8.0-ios17.0": {
           "targetAlias": "net8.0-ios",
           "dependencies": {
             "Microsoft.Extensions.Logging.Debug": {
@@ -115,17 +123,30 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )",
+              "version": "[8.0.1, )",
               "autoReferenced": true
+            },
+<<<<<<< Updated upstream
+=======
+            "MySqlConnect": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+>>>>>>> Stashed changes
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             }
           },
           "imports": [
@@ -147,9 +168,9 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         },
-        "net8.0-maccatalyst17.2": {
+        "net8.0-maccatalyst17.0": {
           "targetAlias": "net8.0-maccatalyst",
           "dependencies": {
             "Microsoft.Extensions.Logging.Debug": {
@@ -158,17 +179,30 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )",
+              "version": "[8.0.1, )",
               "autoReferenced": true
+            },
+<<<<<<< Updated upstream
+=======
+            "MySqlConnect": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
+>>>>>>> Stashed changes
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             }
           },
           "imports": [
@@ -191,7 +225,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         },
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
@@ -202,11 +236,25 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[8.0.6, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.Maui.Controls.Compatibility": {
               "target": "Package",
+<<<<<<< Updated upstream
               "version": "[8.0.6, )"
+=======
+              "version": "[8.0.3, )"
+            },
+            "MySqlConnect": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )"
+>>>>>>> Stashed changes
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.6, )"
             }
           },
           "imports": [
@@ -234,7 +282,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
