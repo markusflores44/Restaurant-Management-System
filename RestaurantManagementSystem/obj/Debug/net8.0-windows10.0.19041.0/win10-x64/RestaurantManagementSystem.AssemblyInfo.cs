@@ -18,11 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestaurantManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+75c2fa777b1333a9c68192277d97f4917f4ea969")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+43478a8afa29760c8f4b9c1e88b444578b984d81")]
->>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("RestaurantManagementSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestaurantManagementSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
