@@ -8,7 +8,8 @@
          Text="Thank you! You have successfully made a reservation."
          VerticalOptions="Center" 
          HorizontalOptions="Center"
-         FontSize="20" Padding="20,50,20,10"/>
+         FontSize="20" Padding="20,50,20,10"
+         x:Name="reservationMessage" />
 
         <Label 
          Text="Would you like to order now?"
