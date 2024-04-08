@@ -9,11 +9,6 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-
-
-
-
-
         <Label 
             Text="Manage Customers"
             VerticalOptions="Center" 

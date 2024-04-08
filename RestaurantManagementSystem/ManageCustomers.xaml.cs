@@ -25,15 +25,8 @@ public partial class ManageCustomers : ContentPage
     public void CustomerAdd()
     {
         //DataBase Connection
-        // Create a new instance of the MySQL connection string builder
-        var builder = new MySqlConnectionStringBuilder
-        {
-            Server = "localhost",
-            UserID = "root",
-            Password = "password",
-            Database = "mydb",
-        };
-        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
+
+        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
 
 
         // Get the text from the Entry
@@ -51,15 +44,8 @@ public partial class ManageCustomers : ContentPage
     public void update_picker()         //Update the picker wheel Method
     {
         //DataBase Connection
-        // Create a new instance of the MySQL connection string builder
-        var builder = new MySqlConnectionStringBuilder
-        {
-            Server = "localhost",
-            UserID = "root",
-            Password = "password",
-            Database = "mydb",
-        };
-        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
+
+        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
 
         //Methods that read/write from DB must be in DB class and called with DB object
         List<Customer> customers = dbAccess.FetchAllCustomers(); // Fetch the list of customers
@@ -81,15 +67,8 @@ public partial class ManageCustomers : ContentPage
     {
         //DataBase Connection
         // Create a new instance of the MySQL connection string builder
-        var builder = new MySqlConnectionStringBuilder
-        {
-            Server = "localhost",
-            UserID = "root",
-            Password = "password",
-            Database = "mydb",
-        };
-        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
-
+ 
+        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
 
         // Get the text from the Entry This is fir manual entry into the text field we have changed this to be automatically populated by the picker
         //int userInput1 = int.Parse(del_entry.Text); this was an Entry field======= <Entry x:Name="del_entry" Placeholder="Enter Customer #" TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400"/>

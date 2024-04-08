@@ -13,9 +13,38 @@
         <Label Text="{Binding Info}" />
         <!-- here to display the reservation details, which can bind with the information in reservation input -->
 
+        <Label 
+            Text="Customer: "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20" Padding="20,50,20,10" 
+            x:Name="customerName" />
+
+        <Label 
+            Text="Date:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20" Padding="20,50,20,10" 
+            x:Name="tentativeDate" />
+
+        <Label 
+            Text="Booth:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20" Padding="20,50,20,10" 
+            x:Name="tentativeBooth" />
+
+        <Label 
+            Text="Time:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="20" Padding="20,50,20,10"
+            x:Name="tentativeTime" />
+
+
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-            <Button Text="Back" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBacktoReservationInputButtonClicked"></Button>
-            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmReservationButtonClicked"></Button>
+            <Button Text="Back" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" TextColor="#F3F3F3" FontSize="20" Margin="40" Clicked="OnBacktoReservationInputButtonClicked"></Button>
+            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" TextColor="#F3F3F3" FontSize="20" Margin="40" Clicked="OnConfirmReservationButtonClicked"></Button>
         </HorizontalStackLayout>
 
 
