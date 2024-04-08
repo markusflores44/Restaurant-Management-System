@@ -48,5 +48,10 @@ namespace RestaurantManagementSystem
             BoothName = paramBoothName;
         }
 
+        //TODO Markus: Perform a check to see if this booth and schedule is already taken. Placement of this method is not final and might change depending where the model is.
+        public bool IsScheduleTaken(DateTime newSchedule, string newBooth)
+        {
+            return false;
+        }
     }
 }

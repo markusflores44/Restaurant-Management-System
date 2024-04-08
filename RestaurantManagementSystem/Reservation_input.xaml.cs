@@ -1,5 +1,4 @@
 using MySqlConnector;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RestaurantManagementSystem;
 
@@ -9,8 +8,9 @@ public partial class Reservation_input : ContentPage
 	{
 		InitializeComponent();
         update_picker(); //Call update_picker funciton so it loads on the page load.
-        updateTablepicker();
     }
+
+
 
 
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
@@ -20,15 +20,14 @@ public partial class Reservation_input : ContentPage
 
     private async void OnSubmitReservationButtonClicked(object sender, EventArgs e)
     {
-        Customer selectedCustomer = (Customer)customerPicker.SelectedItem;
-        DateTime selectedDateTime = dateTimeOptions[timePicker.SelectedIndex];
-        int selectedBooth = boothIdList[tablePicker.SelectedIndex];
-        string selectedBoothName = (string)tablePicker.SelectedItem;
-
-        await Navigation.PushAsync(new Reservation_confirm(selectedCustomer, selectedDateTime, selectedBooth, selectedBoothName));
+        await Navigation.PushAsync(new Reservation_confirm());
     }
 
     //if timeslot is booked, error message will appear
+
+
+
+
 
 
     //**************************** Kyles Code ***************************//
@@ -37,8 +36,15 @@ public partial class Reservation_input : ContentPage
     public void update_picker()         //Update the picker wheel Method
     {
         //DataBase Connection
-
-        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
+        // Create a new instance of the MySQL connection string builder
+        var builder = new MySqlConnectionStringBuilder
+        {
+            Server = "localhost",
+            UserID = "root",
+            Password = "1234",
+            Database = "mydb",
+        };
+        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
 
         //Methods that read/write from DB must be in DB class and called with DB object
         List<Customer> customers = dbAccess.FetchAllCustomers(); // Fetch the list of customers
@@ -47,6 +53,9 @@ public partial class Reservation_input : ContentPage
         //display the string line FullDetails from EACH object in Customer Class/Reservation Class
         customerPicker.ItemDisplayBinding = new Binding("FullDetails");
     }
+
+
+
 
 
 
@@ -70,54 +79,6 @@ public partial class Reservation_input : ContentPage
 
     //**************************** Kyles Code END ***************************//
 
-    private List<int> boothIdList;
-    public void updateTablepicker()
-    {
-       
-        boothIdList = new List<int>();
-
-        DatabaseAccess dbAccess = new DatabaseAccess();  
-
-        Dictionary<int, string> booths = dbAccess.getAllBooths();
-
-        foreach(KeyValuePair<int, string> entry in booths)
-        {
-            tablePicker.Items.Add(entry.Value);
-            boothIdList.Add(entry.Key);
-        }
-    }
-
-    private List<DateTime> dateTimeOptions;
-    public void updateTimepicker(object sender, EventArgs e)
-    {
-        if (tablePicker.SelectedIndex == -1)
-        {
-            return;
-        }
-        timePicker.Items.Clear();
-        dateTimeOptions = new List<DateTime>();
-        DateTime chosenSchedule = schedulePicker.Date;
-        int chosenTable = boothIdList[tablePicker.SelectedIndex];
-
-
-        chosenSchedule = chosenSchedule.Add(new System.TimeSpan(0, 8, 0, 0));
-
-        DatabaseAccess dbAccess = new DatabaseAccess();
-
-        List<DateTime> takenTimeSlots = dbAccess.takenTimeSlots(chosenTable, chosenSchedule);
-
-
-        for (int i = 0; i < 8;  i++)
-        {
-            if (!takenTimeSlots.Contains(chosenSchedule))
-            {
-                timePicker.Items.Add($"{8+i}:00 - {9+i}:00");
-                dateTimeOptions.Add(chosenSchedule);
-            }
-            chosenSchedule = chosenSchedule.Add(new System.TimeSpan(0, 1, 0, 0));
-        }
-       
-    }
 
 
 

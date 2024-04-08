@@ -9,7 +9,13 @@ public partial class ManageCustomers : ContentPage
 		InitializeComponent();
         update_picker();
     }
-
+    public MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder
+    {
+        Server = "localhost",
+        UserID = "root",
+        Password = "1234",
+        Database = "mydb",
+    };
 
 
 
@@ -25,8 +31,9 @@ public partial class ManageCustomers : ContentPage
     public void CustomerAdd()
     {
         //DataBase Connection
+        // Create a new instance of the MySQL connection string builder
 
-        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
+        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
 
 
         // Get the text from the Entry
@@ -44,8 +51,9 @@ public partial class ManageCustomers : ContentPage
     public void update_picker()         //Update the picker wheel Method
     {
         //DataBase Connection
+        // Create a new instance of the MySQL connection string builder
 
-        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
+        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
 
         //Methods that read/write from DB must be in DB class and called with DB object
         List<Customer> customers = dbAccess.FetchAllCustomers(); // Fetch the list of customers
@@ -63,12 +71,15 @@ public partial class ManageCustomers : ContentPage
     }
 
     // Delete the Customer by ID
-    public void CustomerDelete()
+
+    // method must be async to handle popup windows in maui (this so the program thread continues while waiting for the user to click ok on the popup menu)
+    public async void CustomerDelete()
     {
         //DataBase Connection
         // Create a new instance of the MySQL connection string builder
- 
-        DatabaseAccess dbAccess = new DatabaseAccess();  //create object of the MSQL string builder
+
+        DatabaseAccess dbAccess = new DatabaseAccess(builder);  //create object of the MSQL string builder
+
 
         // Get the text from the Entry This is fir manual entry into the text field we have changed this to be automatically populated by the picker
         //int userInput1 = int.Parse(del_entry.Text); this was an Entry field======= <Entry x:Name="del_entry" Placeholder="Enter Customer #" TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400"/>
@@ -78,10 +89,16 @@ public partial class ManageCustomers : ContentPage
         int userInput1 = selectedCustomerId;
         // call method to insert new customer into custoemr table, pass along arguments from Entry fields
         //Methods that read/write from DB must be in DB class and called with DB object
-        dbAccess.DeleteRecordIfExists(userInput1);
+
+        // returns true if user deleted, false if error message is thrown. this will stop the delete confirmed display from populating.
+        bool deleteconfirmed =  await dbAccess.DeleteRecordIfExists(userInput1);
 
         // CONFIRM CUSTOMER HAS BEEN Deleted
-        displaycustomerEntry_del.Text = $"Customer #{userInput1} has been Deleted!";
+        if (deleteconfirmed) {
+
+            displaycustomerEntry_del.Text = $"Customer #{userInput1} has been Deleted!";
+        }
+
     }
 
 
