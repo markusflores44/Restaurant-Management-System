@@ -2,10 +2,16 @@ namespace RestaurantManagementSystem;
 
 public partial class OrderDisplay : ContentPage
 {
-	public OrderDisplay()
+    private Reservation _reservation;
+    private Item _item1;
+    private Item _item2;
+
+    public OrderDisplay()
 	{
 		InitializeComponent();
-	}
+    }
+
+
 
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
     {

@@ -4,10 +4,6 @@
              x:Class="RestaurantManagementSystem.ManageCustomers"
              Title="ManageCustomers">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
 
         <Label 
             Text="Manage Customers"
