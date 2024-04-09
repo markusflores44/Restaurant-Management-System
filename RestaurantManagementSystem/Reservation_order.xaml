@@ -11,18 +11,9 @@
          FontSize="20" Padding="20,50,20,10"
          x:Name="reservationMessage" />
 
-        <Label 
-         Text="Would you like to order now?"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center"
-         FontSize="20" Padding="20,50,20,10"/>
-
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-            <Button Text="No" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBacktoMainButtonClicked"></Button>
-            <Button Text="Yes" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnGoToOrderButtonClicked"></Button>
+            <Button Text="Back to the Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBacktoMainButtonClicked"></Button>
         </HorizontalStackLayout>
-
-
 
 
     </VerticalStackLayout>

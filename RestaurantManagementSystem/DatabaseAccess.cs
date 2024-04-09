@@ -18,7 +18,7 @@ namespace RestaurantManagementSystem
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "root",
+                Password = "password",
                 Database = "mydb",
             };
 
