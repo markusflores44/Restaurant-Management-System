@@ -14,16 +14,16 @@ public partial class OrderNow : ContentPage
             Password = "password",
             Database = "mydb",
         };
-
+        //mains picker
         DatabaseAccess dbAccess = new DatabaseAccess(builder);
         List<Item> items1 = dbAccess.FetchMainsItems();
         MenuMainsPicker.ItemsSource = items1;
         MenuMainsPicker.ItemDisplayBinding = new Binding("FullDetails");
-
+        //pops picker
         List<Item> items2 = dbAccess.FetchPopsItems();
         MenuPopsPicker.ItemsSource = items2;
         MenuPopsPicker.ItemDisplayBinding = new Binding("FullDetails");
-
+        //reservation information picker
         List<Reservation> reservations=dbAccess.FetchReservationItems();
         ReservationSearchPicker.ItemsSource = reservations;
         ReservationSearchPicker.ItemDisplayBinding = new Binding("FullDetails");
@@ -31,15 +31,23 @@ public partial class OrderNow : ContentPage
 
     }
 
+    //back to the main page
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
     }
 
+    //click button event, collect data from ordernow to orderdisplay
     private async void OnConfirmOrderButtonClicked(object sender, EventArgs e)
     {
+        Item selectedItem1 = (Item)MenuMainsPicker.SelectedItem;
+        Item selectedItem2 = (Item)MenuPopsPicker.SelectedItem;
+        double totalcost = Convert.ToDouble(totalPrice.Text);
+        int mainsquantity = Convert.ToInt32(MainsItemsNumber.Text);
+        int popsquantity = Convert.ToInt32(PopsItemsNumber.Text);
+        Reservation reservation = (Reservation)ReservationSearchPicker.SelectedItem;
 
-        await Navigation.PushAsync(new OrderDisplay());
+        await Navigation.PushAsync(new OrderDisplay(selectedItem1, mainsquantity, selectedItem2, popsquantity, totalcost,reservation));
     }
 
 
@@ -68,7 +76,7 @@ public partial class OrderNow : ContentPage
             BuilderString = builderString;
         }
 
-
+        //select items from database where mains items number is smaller than 2000
         List<Item> items1 = new List<Item>();
         public List<Item> FetchMainsItems()
         {
@@ -96,6 +104,7 @@ public partial class OrderNow : ContentPage
         }
 
 
+        //select items from database where pop items number is bigger than 2000
         List<Item> items2 = new List<Item>();
         public List<Item> FetchPopsItems()
         {
@@ -123,8 +132,6 @@ public partial class OrderNow : ContentPage
 
 
         //Search reservation here
-
-
 
         List<Reservation> reservation = new List<Reservation>();
         public List<Reservation> FetchReservationItems()
@@ -208,6 +215,8 @@ public partial class OrderNow : ContentPage
         UpdateTotalPrice();
     }
 
+
+    //add pops function
     private void OnAddPopsItemsClicked(object sender, EventArgs e)
     {
 
@@ -229,7 +238,7 @@ public partial class OrderNow : ContentPage
 
 
 
-    //items minus button
+    // minus pops button
     private void OnMinusPopsItemsClicked(object sender, EventArgs e)
     {
 
@@ -247,7 +256,7 @@ public partial class OrderNow : ContentPage
         UpdateTotalPrice();
     }
 
-
+    //make selected item display on the picker
     public void MenuMainsPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         var picker = (Picker)sender;

@@ -1,11 +1,14 @@
 using MySqlConnector;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography.X509Certificates;
 
 namespace RestaurantManagementSystem;
 
 public partial class OrderMain : ContentPage
 {
-
+    private BillClass bill = new BillClass();
+    private Item selectedMainsItem;
+    private Item selectedPopsItem;
     public OrderMain()
     {
         InitializeComponent();
@@ -29,6 +32,7 @@ public partial class OrderMain : ContentPage
         MenuPopsPicker.ItemDisplayBinding = new Binding("FullDetails");
 
 
+
     }
 
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
@@ -38,7 +42,13 @@ public partial class OrderMain : ContentPage
 
     private async void OnConfirmOrderButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new OrderDisplay());
+        Item selectedItem1 = (Item)MenuMainsPicker.SelectedItem;
+        Item selectedItem2 = (Item)MenuPopsPicker.SelectedItem;
+        double totalcost= Convert.ToDouble(totalPrice.Text);
+        int mainsquantity = Convert.ToInt32(MainsItemsNumber.Text);
+        int popsquantity= Convert.ToInt32(PopsItemsNumber.Text);
+
+        await Navigation.PushAsync(new OrderDisplay(selectedItem1,mainsquantity, selectedItem2, popsquantity, totalcost));
     }
 
 
@@ -58,7 +68,7 @@ public partial class OrderMain : ContentPage
             BuilderString = builderString;
         }
 
-
+        //connect with database to choose mains items and display
         List<Item> items1 = new List<Item>();
         public List<Item> FetchMainsItems()
         {
@@ -85,9 +95,11 @@ public partial class OrderMain : ContentPage
             return items1;
         }
 
+
+        //connect with database to choose pops items and display
+        List<Item> items2 = new List<Item>();
         public List<Item> FetchPopsItems()
         {
-            List<Item> items2 = new List<Item>();
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
@@ -134,6 +146,8 @@ public partial class OrderMain : ContentPage
 
             MainsItemsNumber.Text = $"{MainsItems}";
         }
+
+
         UpdateTotalPrice();
 
     }
@@ -179,6 +193,8 @@ public partial class OrderMain : ContentPage
 
 
     //items minus button
+
+
     private void OnMinusPopsItemsClicked(object sender, EventArgs e)
     {
 
@@ -193,9 +209,10 @@ public partial class OrderMain : ContentPage
             PopsItemsNumber.Text = $"{PopsItems}";
         }
 
+        
         UpdateTotalPrice();
     }
-
+  
 
     public void MenuMainsPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
