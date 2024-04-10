@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestaurantManagementSystem.OrderMain"
-             Title="OrderMain">
+             x:Class="RestaurantManagementSystem.OrderNow"
+             Title="OrderNow">
     <VerticalStackLayout>
+        <Picker x:Name="ReservationSearchPicker" WidthRequest="400" Title="Search for reservation here" Margin="5" SelectedIndexChanged="ReservationResearch_SelectedIndexChanged"></Picker>
+
         <Label 
             Text="Menu"
             VerticalOptions="Center" 
@@ -33,7 +35,7 @@
             <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
             <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
         </HorizontalStackLayout>
-
-
+        
+        
     </VerticalStackLayout>
 </ContentPage>
