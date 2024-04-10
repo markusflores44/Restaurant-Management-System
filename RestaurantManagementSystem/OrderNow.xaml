@@ -4,9 +4,38 @@
              x:Class="RestaurantManagementSystem.OrderNow"
              Title="OrderNow">
     <VerticalStackLayout>
+        <Picker x:Name="ReservationSearchPicker" WidthRequest="400" Title="Search for reservation here" Margin="5" SelectedIndexChanged="ReservationResearch_SelectedIndexChanged"></Picker>
+
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Menu"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            FontSize="40" Padding="20,50,20,10"/>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Picker x:Name="MenuMainsPicker" WidthRequest="400" Title="Please select your mains" Margin="5" SelectedIndexChanged="MenuMainsPicker_SelectedIndexChanged"></Picker>
+            <Button Text="-" Clicked="OnMinusMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="MainsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Picker x:Name="MenuPopsPicker" WidthRequest="400" Title="Please select your pops" Margin="5" SelectedIndexChanged="MenuPopsPicker_SelectedIndexChanged"></Picker>
+            <Button Text="-" Clicked="OnMinusPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="PopsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+            <Label Text="Total Price" Padding="10"></Label>
+            <Label x:Name="totalPrice" Text="" Padding="10"></Label>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
+            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
+        </HorizontalStackLayout>
+        
+        
     </VerticalStackLayout>
 </ContentPage>
