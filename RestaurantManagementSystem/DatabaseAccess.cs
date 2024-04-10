@@ -20,7 +20,7 @@ namespace RestaurantManagementSystem
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "1234",
+                Password = "password",
                 Database = "mydb",
             };
 
@@ -453,14 +453,7 @@ namespace RestaurantManagementSystem
         }
 
         //Fetch Rez
-        public class Reservation
-        {
-            public int bookingnumber { get; set; }
-            public DateTime reservationTime { get; set; }
-            public string reservationName { get; set; }
-            public string reservationTable { get; set; }
-            public string FullDetails => $"Booking Number : {bookingnumber} Reservation Time: {reservationTime}, Reservation Name:{reservationName}, Reservation Table:{reservationTable}";
-        }
+
 
         List<Reservation> reservation = new List<Reservation>();
         public List<Reservation> FetchReservationItems()
@@ -472,7 +465,7 @@ namespace RestaurantManagementSystem
              "FROM reservation r " +
              "JOIN customer c ON r.`Customer#` = c.`Customer#` " +
              "JOIN booth_schedule bs ON r.booth_schedule_id = bs.booth_schedule_id " +
-             "JOIN booth b ON bs.`Booth_Booth#` = b.`Booth#`";
+             "JOIN booth b ON bs.`Booth#` = b.`Booth#`";
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -480,10 +473,10 @@ namespace RestaurantManagementSystem
                     {
                         reservation.Add(new Reservation
                         {
-                            bookingnumber = reader.GetInt32(0),
-                            reservationTime = reader.GetDateTime(1),
-                            reservationName = reader.GetString(2),
-                            reservationTable = reader.GetString(3)
+                           BookingNumber = reader.GetInt32(0),
+                            Schedule = reader.GetDateTime(1),
+                            Customer = new Customer { Name = reader.GetString(2) },
+                            BoothName = reader.GetString(3)
 
                         }); ;
                     }

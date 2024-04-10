@@ -7,8 +7,6 @@ public partial class OrderNow : ContentPage
 
     public OrderNow()
     {
-        
-        InitializeComponent();
        
         InitializeComponent();
         DatabaseAccess access = new DatabaseAccess();
@@ -22,7 +20,7 @@ public partial class OrderNow : ContentPage
 
 
         //reservation information picker
-        List<DatabaseAccess.Reservation> reservations = access.FetchReservationItems();
+        List<Reservation> reservations = access.FetchReservationItems();
         ReservationSearchPicker.ItemsSource = reservations;
         ReservationSearchPicker.ItemDisplayBinding = new Binding("FullDetails");
 
@@ -30,14 +28,6 @@ public partial class OrderNow : ContentPage
     }
 
     //back to the main page
-    public class Reservation
-    {
-        public int bookingnumber { get; set; }
-        public DateTime reservationTime { get; set; }
-        public string reservationName { get; set; }
-        public string reservationTable { get; set; }
-        public string FullDetails => $"Booking Number : {bookingnumber} Reservation Time: {reservationTime}, Reservation Name:{reservationName}, Reservation Table:{reservationTable}";
-    }
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
@@ -178,7 +168,7 @@ public partial class OrderNow : ContentPage
         var selectedReservation = (Reservation)picker.SelectedItem;
         if (selectedReservation != null)
         {
-            booking_number = selectedReservation.bookingnumber;
+            booking_number = selectedReservation.BookingNumber;
 
         }
     }

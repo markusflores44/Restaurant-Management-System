@@ -25,10 +25,10 @@ public partial class OrderDisplay : ContentPage
     }
 
     //reservation related order display
-    public OrderDisplay(Item selectedItem1, int mainsquantity, Item selectedItem2, int popsquantity, double totalcost, OrderNow.Reservation reservation)
+    public OrderDisplay(Item selectedItem1, int mainsquantity, Item selectedItem2, int popsquantity, double totalcost, Reservation reservation)
     {
         InitializeComponent();
-        BookingNumber.Text = $"Booking Number:{reservation.bookingnumber}";
+        BookingNumber.Text = $"Booking Number:{reservation.BookingNumber}";
         MainsChosen.Text = $"Mains: {selectedItem1.Name}    Price-{selectedItem1.Price}    Number-{mainsquantity}";
         PopsChosen.Text = $"Pops: {selectedItem2.Name}   Price-{selectedItem2.Price}    Number-{popsquantity}";
         TotalCost.Text = $"Total Cost: {totalcost}";

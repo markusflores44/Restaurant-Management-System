@@ -42,5 +42,7 @@ namespace RestaurantManagementSystem
             Customer = paramCustomer;
             BoothName = paramBoothName;
         }
+        public string FullDetails => $"Booking Number : {_bookingNumber} Reservation Time: {_schedule}, Reservation Name:{_customer}, Reservation Table:{_boothName}";
+        public Reservation(){}
     }
 }
