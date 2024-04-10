@@ -35,7 +35,7 @@
             <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
             <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
         </HorizontalStackLayout>
-        
-        
+
+
     </VerticalStackLayout>
 </ContentPage>

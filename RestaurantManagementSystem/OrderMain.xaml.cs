@@ -1,36 +1,23 @@
 using MySqlConnector;
-using System.Reflection.PortableExecutable;
-using System.Security.Cryptography.X509Certificates;
 
 namespace RestaurantManagementSystem;
 
 public partial class OrderMain : ContentPage
 {
-    private BillClass bill = new BillClass();
-    private Item selectedMainsItem;
-    private Item selectedPopsItem;
+    public MySqlConnectionStringBuilder BuilderString { get; set; }
     public OrderMain()
     {
+        
         InitializeComponent();
+        DatabaseAccess access = new DatabaseAccess();
 
-
-        var builder = new MySqlConnectionStringBuilder
-        {
-            Server = "localhost",
-            UserID = "root",
-            Password = "password",
-            Database = "mydb",
-        };
-
-        DatabaseAccess dbAccess = new DatabaseAccess(builder);
-        List<Item> items1 = dbAccess.FetchMainsItems();
-        MenuMainsPicker.ItemsSource = items1;
+        List<Item> mains = access.FetchMainsItems();
+        MenuMainsPicker.ItemsSource = mains;
         MenuMainsPicker.ItemDisplayBinding = new Binding("FullDetails");
 
-        List<Item> items2 = dbAccess.FetchPopsItems();
-        MenuPopsPicker.ItemsSource = items2;
+        List<Item> drinks = access.FetchPopsItems();
+        MenuPopsPicker.ItemsSource = drinks;
         MenuPopsPicker.ItemDisplayBinding = new Binding("FullDetails");
-
 
 
     }
@@ -42,87 +29,14 @@ public partial class OrderMain : ContentPage
 
     private async void OnConfirmOrderButtonClicked(object sender, EventArgs e)
     {
+
         Item selectedItem1 = (Item)MenuMainsPicker.SelectedItem;
         Item selectedItem2 = (Item)MenuPopsPicker.SelectedItem;
-        double totalcost= Convert.ToDouble(totalPrice.Text);
+        double totalcost = Convert.ToDouble(totalPrice.Text);
         int mainsquantity = Convert.ToInt32(MainsItemsNumber.Text);
-        int popsquantity= Convert.ToInt32(PopsItemsNumber.Text);
-
-        await Navigation.PushAsync(new OrderDisplay(selectedItem1,mainsquantity, selectedItem2, popsquantity, totalcost));
+        int popsquantity = Convert.ToInt32(PopsItemsNumber.Text);
+        await Navigation.PushAsync(new OrderDisplay(selectedItem1, mainsquantity, selectedItem2, popsquantity, totalcost));
     }
-
-
-    public class Item
-    {
-
-        public string itemname { get; set; }
-        public double itemprice { get; set; }
-        public string FullDetails => $"Item Name: {itemname}, Item Price:{itemprice}";
-    }
-
-    public class DatabaseAccess
-    {
-        public MySqlConnectionStringBuilder BuilderString { get; set; }
-        public DatabaseAccess(MySqlConnectionStringBuilder builderString)
-        {
-            BuilderString = builderString;
-        }
-
-        //connect with database to choose mains items and display
-        List<Item> items1 = new List<Item>();
-        public List<Item> FetchMainsItems()
-        {
-
-            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
-            {
-                connection.Open();
-                string sql = "SELECT item_name, item_price FROM menu_item WHERE `item#`<2000";
-
-                MySqlCommand command = new MySqlCommand(sql, connection);
-                using (MySqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items1.Add(new Item
-                        {
-                            itemname = reader.GetString(0),
-                            itemprice = reader.GetDouble(1)
-                        });
-                    }
-                }
-                connection.Close();
-            }
-            return items1;
-        }
-
-
-        //connect with database to choose pops items and display
-        List<Item> items2 = new List<Item>();
-        public List<Item> FetchPopsItems()
-        {
-            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
-            {
-                connection.Open();
-                string sql = "SELECT item_name, item_price FROM menu_item WHERE `item#`>2000";
-
-                MySqlCommand command = new MySqlCommand(sql, connection);
-                using (MySqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        items2.Add(new Item
-                        {
-                            itemname = reader.GetString(0),
-                            itemprice = reader.GetDouble(1)
-                        });
-                    }
-                }
-                connection.Close();
-            }
-            return items2;
-        }
-    }
-
 
     double total_Price = 0;
     double MainsperItemPrice = 0;
@@ -146,8 +60,6 @@ public partial class OrderMain : ContentPage
 
             MainsItemsNumber.Text = $"{MainsItems}";
         }
-
-
         UpdateTotalPrice();
 
     }
@@ -193,8 +105,6 @@ public partial class OrderMain : ContentPage
 
 
     //items minus button
-
-
     private void OnMinusPopsItemsClicked(object sender, EventArgs e)
     {
 
@@ -209,10 +119,9 @@ public partial class OrderMain : ContentPage
             PopsItemsNumber.Text = $"{PopsItems}";
         }
 
-        
         UpdateTotalPrice();
     }
-  
+
 
     public void MenuMainsPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -220,7 +129,7 @@ public partial class OrderMain : ContentPage
         var selectedItem = (Item)picker.SelectedItem;
         if (selectedItem != null)
         {
-            MainsperItemPrice = selectedItem.itemprice;
+            MainsperItemPrice = selectedItem.Price;
 
         }
         UpdateTotalPrice();
@@ -232,7 +141,7 @@ public partial class OrderMain : ContentPage
         var selectedItem = (Item)picker.SelectedItem;
         if (selectedItem != null)
         {
-            PopsperItemPrice = selectedItem.itemprice;
+            PopsperItemPrice = selectedItem.Price;
 
         }
         UpdateTotalPrice();
@@ -243,6 +152,5 @@ public partial class OrderMain : ContentPage
         total_Price = MainsperItemPrice * MainsItems + PopsperItemPrice * PopsItems;
         totalPrice.Text = total_Price.ToString("F2");
     }
-
 
 }

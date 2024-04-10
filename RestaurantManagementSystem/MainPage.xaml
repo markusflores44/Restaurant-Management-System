@@ -11,7 +11,7 @@
                 Source="logo.png"
                 HeightRequest="125"
                 Aspect="AspectFit"
-                SemanticProperties.Description="four guys" />
+                SemanticProperties.Description="dot net bot in a race car number eight" />
 
             <Label
                 Text="Welcome to our Restaurant!"
