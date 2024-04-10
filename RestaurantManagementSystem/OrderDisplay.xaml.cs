@@ -47,7 +47,7 @@ public partial class OrderDisplay : ContentPage
     //saves data to db once clicked.
     private async void OnSendToOrderButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Bill());
+        await Navigation.PushAsync(new MainPage());
 
         DatabaseAccess access = new DatabaseAccess();
         access.SaveMainToBill_Items(mq, item_name1);
