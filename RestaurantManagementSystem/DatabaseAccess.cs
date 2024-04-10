@@ -18,7 +18,7 @@ namespace RestaurantManagementSystem
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "password",
+                Password = "1234",
                 Database = "mydb",
             };
 
@@ -50,21 +50,32 @@ namespace RestaurantManagementSystem
         }
 
         //Deletes Customer by their Customer ID, the PK
-        public void DeleteRecordIfExists(int customer_num)
+        // method must be async to handle popup windows in maui (this so the program thread continues while waiting for the user to click ok on the popup menu)
+        public async Task<bool> DeleteRecordIfExists(int customer_num)
         {
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
-                connection.Open();
-                string query = "Delete FROM Customer WHERE `Customer#` = @customer_num"; using (var command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@customer_num", customer_num);
-                    int result = command.ExecuteNonQuery();
-                    if (result < 0)
+                    connection.Open();
+                    string query = "DELETE FROM Customer WHERE `Customer#` = @customer_num";
+                    using (var command = new MySqlCommand(query, connection))
                     {
-                        Console.WriteLine("Error inserting data into the database.");
+                        command.Parameters.AddWithValue("@customer_num", customer_num);
+                        int result = command.ExecuteNonQuery();
+                        return true;
                     }
                 }
-                connection.Close();
+                catch (MySqlException ex) when (ex.Message.Contains("a foreign key constraint fails"))
+                {
+                    // away users to click ok
+                    await Application.Current.MainPage.DisplayAlert("Error", "Cannot delete customer with active reservations.", "OK");
+                    return false;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 

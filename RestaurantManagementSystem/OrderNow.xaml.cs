@@ -11,7 +11,7 @@ public partial class OrderNow : ContentPage
         {
             Server = "localhost",
             UserID = "root",
-            Password = "password",
+            Password = "1234",
             Database = "mydb",
         };
         //mains picker

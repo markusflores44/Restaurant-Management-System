@@ -18,7 +18,7 @@ public partial class OrderMain : ContentPage
         {
             Server = "localhost",
             UserID = "root",
-            Password = "password",
+            Password = "1234",
             Database = "mydb",
         };
 
