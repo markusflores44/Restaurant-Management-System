@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestaurantManagementSystem.Bill"
              Title="Bill">
+    <!--DO WE NEED THIS PAGE AS WE DISPLAY THE BILL ON DISPLAY BILL??-->
     <VerticalStackLayout>
         <Label 
             Text="Here is your bill:"

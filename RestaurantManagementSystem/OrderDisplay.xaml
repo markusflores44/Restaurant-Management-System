@@ -5,7 +5,7 @@
              Title="OrderDisplay">
     <VerticalStackLayout>
         <Label 
-            Text="Here is your oder: "
+            Text="Here is your order: "
             VerticalOptions="Center" 
             HorizontalOptions="Center" FontSize="20"/>
 
@@ -15,7 +15,7 @@
          HorizontalOptions="Center"
          FontSize="20" Padding="20,50,20,10" 
          x:Name="BookingNumber" />
-        
+
         <Label
         Text="Mains:"
         VerticalOptions="Center" 
