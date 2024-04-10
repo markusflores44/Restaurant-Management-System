@@ -9,8 +9,37 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" FontSize="20"/>
 
-        <Label Text="{Binding Info}" />
-        <!-- here to display the order details, which can bind with the information in order main -->
+        <Label 
+         Text=""
+         VerticalOptions="Center" 
+         HorizontalOptions="Center"
+         FontSize="20" Padding="20,50,20,10" 
+         x:Name="BookingNumber" />
+        
+        <Label
+        Text="Mains:"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        FontSize="20" Padding="20,50,20,10" 
+        x:Name="MainsChosen" />
+
+        <Label
+        Text="Pops:"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        FontSize="20" Padding="20,50,20,10" 
+        x:Name="PopsChosen" />
+
+        <Label
+        Text="Total Cost:"
+        VerticalOptions="Center" 
+        HorizontalOptions="Center"
+        FontSize="20" Padding="20,50,20,10" 
+        x:Name="TotalCost" />
+
+
+
+
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
             <Button Text="Cancel" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
