@@ -37,6 +37,8 @@ public partial class OrderDisplay : ContentPage
         this.selectedItem2 = selectedItem2;
         this.mq = mainsquantity ;
         this.pq = popsquantity ;
+        item_name1 = selectedItem1.Name;
+        item_name2 = selectedItem2.Name;
 
     }
     private async void OnBackToMainButtonClicked(object sender, EventArgs e)
