@@ -3,40 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestaurantManagementSystem.ManageCustomers"
              Title="ManageCustomers">
-    <ScrollView>
-        <VerticalStackLayout>
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
 
-            <Label 
+        <Label 
             Text="Manage Customers"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            FontSize="40" Padding="20,50,20,10"/>
+            HorizontalOptions="Start"/>
 
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-                <Entry x:Name="Customer_nameEntry" Placeholder="Enter First Name" TextColor="White" FontSize="Small" WidthRequest="400"/>
-            </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Entry x:Name="Customer_nameEntry" Placeholder="Enter First Name" TextColor="White" FontSize="Small" WidthRequest="400"/>
+        </HorizontalStackLayout>
+
+        
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Entry x:Name="Phone_numberEntry" Placeholder="Enter Phone Number"  TextColor="White" FontSize="Small" WidthRequest="400"/>
+        </HorizontalStackLayout>
+
+        
+        <Button Text="Save New Customer" Clicked="Save_Cust_Button_Click"  TextColor="White" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40,40,40,10"/>
+        <Label x:Name="displaycustomerEntry" Text="" TextColor="White" WidthRequest="400" FontSize="20" Margin="0,0,0,100"/>
 
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-                <Entry x:Name="Phone_numberEntry" Placeholder="Enter Phone Number"  TextColor="White" FontSize="Small" WidthRequest="400"/>
-            </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Label Text="Select Customer to delete" Padding="10" />
+            <Picker x:Name="customerPicker" HorizontalOptions="Fill" WidthRequest="400" SelectedIndexChanged="CustomerPicker_SelectedIndexChanged" ></Picker>
+        </HorizontalStackLayout>
 
 
-            <Button Text="Save New Customer" Clicked="Save_Cust_Button_Click"  TextColor="White" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40,40,40,10"/>
-            <Label x:Name="displaycustomerEntry" Text="" TextColor="White" WidthRequest="400" FontSize="20" Margin="0,0,0,100"/>
+        
+        <Button x:Name="del_button" Text="Delete Customer" Clicked="Delete_Cust_Button_Click"  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40"/>
+        <Label x:Name="displaycustomerEntry_del" Text=""  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400"/>
 
-
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-                <Label Text="Select Customer to delete" Padding="10" />
-                <Picker x:Name="customerPicker" HorizontalOptions="Fill" WidthRequest="400" SelectedIndexChanged="CustomerPicker_SelectedIndexChanged" ></Picker>
-            </HorizontalStackLayout>
-
-
-
-            <Button x:Name="del_button" Text="Delete Customer" Clicked="Delete_Cust_Button_Click"  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40"/>
-            <Label x:Name="displaycustomerEntry_del" Text=""  TextColor="White" HorizontalOptions="CenterAndExpand" WidthRequest="400"/>
-
-        </VerticalStackLayout>
-    </ScrollView>
+    </VerticalStackLayout>
 </ContentPage>

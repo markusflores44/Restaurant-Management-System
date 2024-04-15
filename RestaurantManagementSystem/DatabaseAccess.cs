@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Working ON Latest Apr 4, 2024
 namespace RestaurantManagementSystem
 {
     // this class holds all methods for retrieving and deleting Database information
@@ -12,6 +13,7 @@ namespace RestaurantManagementSystem
     {
         public MySqlConnectionStringBuilder BuilderString { get; set; }
 
+        //May need to change.
         public DatabaseAccess()
         {
             var builder = new MySqlConnectionStringBuilder
@@ -50,21 +52,32 @@ namespace RestaurantManagementSystem
         }
 
         //Deletes Customer by their Customer ID, the PK
-        public void DeleteRecordIfExists(int customer_num)
+        // method must be async to handle popup windows in maui (this so the program thread continues while waiting for the user to click ok on the popup menu)
+        public async Task<bool> DeleteRecordIfExists(int customer_num)
         {
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
-                connection.Open();
-                string query = "Delete FROM Customer WHERE `Customer#` = @customer_num"; using (var command = new MySqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@customer_num", customer_num);
-                    int result = command.ExecuteNonQuery();
-                    if (result < 0)
+                    connection.Open();
+                    string query = "DELETE FROM Customer WHERE `Customer#` = @customer_num";
+                    using (var command = new MySqlCommand(query, connection))
                     {
-                        Console.WriteLine("Error inserting data into the database.");
+                        command.Parameters.AddWithValue("@customer_num", customer_num);
+                        int result = command.ExecuteNonQuery();
+                        return true;
                     }
                 }
-                connection.Close();
+                catch (MySqlException ex) when (ex.Message.Contains("a foreign key constraint fails"))
+                {
+                    // away users to click ok
+                    await Application.Current.MainPage.DisplayAlert("Error", "Cannot delete customer with active reservations.", "OK");
+                    return false;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -173,6 +186,7 @@ namespace RestaurantManagementSystem
 
                 int boothScheduleID = 0;
 
+                //NOT WORKING???(What is createCommand???? Reader is Null!
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -206,5 +220,273 @@ namespace RestaurantManagementSystem
             return reservationID;
         }
 
+        //Creates a single table and saves the mains and pop to the database.
+        int sharedBillNum = 0;
+
+        /*SaveMainToBill_items
+         * Saves the mains to the database under the bill_items table.
+         * @param quantity The quantity of each item.
+         * @param item_name The name of the main that is being saved.
+         
+         */
+        public void SaveMainToBill_Items(int quantity, string item_name)
+        {
+
+            //Placeholder Variables
+            int item_num = 1001;
+            int bill_num = 0;
+
+            //Execute only if the quantity is not 0. Else do not save any data.
+            if (quantity != 0)
+            {
+                //Opens the connection to the database.
+                using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+                {
+                    connection.Open();
+
+                    //Creates new bill table using the autoincrement function in sql.
+                    string billNum = "INSERT INTO bill() VALUES ()"; using (var command = new MySqlCommand(billNum, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@`bill#`", bill_num);
+
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    //Grab the bill_num and assign it to the bill_num Variable.
+                    string query = "SELECT LAST_INSERT_ID()";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                bill_num = Convert.ToInt32(reader[0]);
+
+                            }
+                        }
+                    }
+
+                    //Selects the item# that matches the selected main.
+                    string item = $"SELECT `item#` FROM menu_item WHERE item_name = @item_name";
+                    using (MySqlCommand command = new MySqlCommand(item, connection))
+                    {
+                        command.Parameters.AddWithValue("@item_name", item_name);
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+
+                                item_num = Convert.ToInt32(reader[0]);
+                            }
+                        }
+                    }
+
+                    //Inserts the data into the bill_items table.
+                    string save = "INSERT INTO bill_items(`Item#`, `Bill#`, Quantity) VALUES (@`item#`, @`bill#`, @quantity)"; using (var command = new MySqlCommand(save, connection))
+                    {
+                        command.Parameters.AddWithValue("@`item#`", item_num);
+                        command.Parameters.AddWithValue("@`bill#`", bill_num);
+                        command.Parameters.AddWithValue("@quantity", quantity);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    sharedBillNum = bill_num; //Assigns value to sharedBillNum variable.
+                    connection.Close(); //Closes connection
+                }
+            }
+        }
+        /*SavePopToBill_items
+         * Saves the pop items to the item_bill table.
+         * 
+         * @param The quantity of the pop ordered.
+         * @param item_name The name of the pop orderded
+         */
+        public void SavePopToBill_Items(int quantity, string item_name)
+        {
+            //Execute if the quantity of pops is not 0. Else do not save any data.
+            if (quantity != 0)
+            {
+                //Placeholder Variables
+                int item_num = 1001;
+                int bill_num = sharedBillNum; //Assigns the bill_num var to the sharedBillNum to be on the same bill as the Mains.
+
+                //Opens connection to the database.
+                using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+                {
+                    connection.Open();
+
+                    //ERROR HANDLING: If mains quantity is 0. Bill_num was not created so creates it here.
+                    if (bill_num == 0)
+                    {
+
+                        //Creates new bill table using the autoincrement function in sql.
+                        string billNum = "INSERT INTO bill() VALUES ()"; using (var command = new MySqlCommand(billNum, connection))
+                        {
+
+                            command.Parameters.AddWithValue("@`bill#`", bill_num);
+
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        //Grab the bill_num and assign it to the bill_num Variable.
+                        string query = "SELECT LAST_INSERT_ID()";
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    bill_num = Convert.ToInt32(reader[0]);
+
+                                }
+                            }
+                        }
+                    }
+
+                    //Grabs the item# that correlates to the pop selected.
+                    string item = $"SELECT `item#` FROM menu_item WHERE item_name = @item_name";
+                    using (MySqlCommand command = new MySqlCommand(item, connection))
+                    {
+                        command.Parameters.AddWithValue("@item_name", item_name);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+
+                                item_num = Convert.ToInt32(reader[0]);
+                            }
+                        }
+                    }
+
+                    //Insets the data into bill_items table
+                    string save = "INSERT INTO bill_items(`Item#`, `Bill#`, Quantity) VALUES (@`item#`, @`bill#`, @quantity)"; using (var command = new MySqlCommand(save, connection))
+                    {
+                        command.Parameters.AddWithValue("@`item#`", item_num);
+                        command.Parameters.AddWithValue("@`bill#`", bill_num);
+                        command.Parameters.AddWithValue("@quantity", quantity);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close(); //Closes Connection
+                }
+            }
+
+        }
+        //Creates Item class(ASK WHY??)
+
+
+        /*FetchMainsItems
+        * Generates the data from the menu_item table for the Mains Picker.
+        * 
+        * @return items1 The selected data from the menu_item table.
+
+        */
+      
+        public List<Item> FetchMainsItems()
+        {
+            List<Item> items1 = new List<Item>(); //Creates list to store Mains in.
+            //Opens the connection to the database.
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            {
+                connection.Open();
+                string sql = "SELECT item_name, item_price FROM menu_item WHERE `item#`<2000"; //Selects only the mains from the database table.
+
+                //Adds the data to the items1 List.
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items1.Add(new Item()
+                        {
+                            Name = reader.GetString(0),
+                            Price = reader.GetDouble(1)
+                        });
+                    }
+                }
+                connection.Close(); //Close connection
+            }
+            return items1;
+        }
+
+        /*FetchPopsItems
+         * 
+         * Generates the data from the menu_item table for the Pop Picker.
+         * 
+         * @return items2 The selected data from the menu_item table.
+         
+         */
+        public List<Item> FetchPopsItems()
+        {
+            List<Item> items2 = new List<Item>(); //Creates list to store the pop in.
+
+            //Opens connection to the database.
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            {
+                connection.Open();
+                string sql = "SELECT item_name, item_price FROM menu_item WHERE `item#`>2000"; //Select only the pops.
+
+                //Adds the data to the items2 list.
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        items2.Add(new Item
+                        {
+                            Name = reader.GetString(0),
+                            Price = reader.GetDouble(1)
+                        });
+                    }
+                }
+                connection.Close(); //Close connection.
+            }
+            return items2;
+        }
+
+        //Fetch Rez
+
+
+        List<Reservation> reservation = new List<Reservation>();
+        public List<Reservation> FetchReservationItems()
+        {
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            {
+                connection.Open();
+                string sql = "SELECT r.`Booking#`, bs.date_time, c.customer_name, b.booth_name " +
+             "FROM reservation r " +
+             "JOIN customer c ON r.`Customer#` = c.`Customer#` " +
+             "JOIN booth_schedule bs ON r.booth_schedule_id = bs.booth_schedule_id " +
+             "JOIN booth b ON bs.`Booth#` = b.`Booth#`";
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        reservation.Add(new Reservation
+                        {
+                           BookingNumber = reader.GetInt32(0),
+                            Schedule = reader.GetDateTime(1),
+                            Customer = new Customer { Name = reader.GetString(2) },
+                            BoothName = reader.GetString(3)
+
+                        }); ;
+                    }
+
+                    connection.Close();
+                }
+
+                return reservation;
+            }
+
+        }
     }
 }

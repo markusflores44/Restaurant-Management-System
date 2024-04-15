@@ -22,10 +22,10 @@ namespace RestaurantManagementSystem
             set => _price = value;
         }
 
-        public Item(string paramName, double paramPrice)
+        public string FullDetails => $"Item Name: {_name}, Item Price:{_price}";
+
+        public Item()
         {
-            this.Name = paramName;
-            this.Price = paramPrice;
         }
     }
 }
