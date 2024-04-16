@@ -122,7 +122,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Reservation` (
   `Booth_Schedule_ID` INT NULL,
   `Customer#` INT NOT NULL,
   `Bill#` INT NULL,
-  `Number_of_Customers` INT NULL,
   PRIMARY KEY (`Booking#`),
   INDEX `Booth_Schedule_ID_idx` (`Booth_Schedule_ID` ASC) VISIBLE,
   INDEX `fk_Reservation_Customer1_idx` (`Customer#` ASC) VISIBLE,

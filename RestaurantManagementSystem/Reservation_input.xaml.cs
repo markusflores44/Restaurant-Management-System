@@ -20,12 +20,53 @@ public partial class Reservation_input : ContentPage
 
     private async void OnSubmitReservationButtonClicked(object sender, EventArgs e)
     {
-        Customer selectedCustomer = (Customer)customerPicker.SelectedItem;
-        DateTime selectedDateTime = dateTimeOptions[timePicker.SelectedIndex];
-        int selectedBooth = boothIdList[tablePicker.SelectedIndex];
-        string selectedBoothName = (string)tablePicker.SelectedItem;
 
-        await Navigation.PushAsync(new Reservation_confirm(selectedCustomer, selectedDateTime, selectedBooth, selectedBoothName));
+        bool errorOccured = false;
+        string errorMessage = "Please enter value for required field:";
+
+        if (customerPicker.SelectedIndex == -1)
+        {
+            errorMessage += " Customer";
+            errorOccured = true;
+        }
+                
+        if (tablePicker.SelectedIndex == -1)
+        {
+            if (errorOccured)
+            {
+                errorMessage += ",";
+            }
+
+            errorMessage += " Table";
+            errorOccured = true;
+            
+        }
+
+        if (timePicker.SelectedIndex == -1)
+        {
+            if (errorOccured)
+            {
+                errorMessage += ",";
+            }
+
+                errorMessage += " Time";
+                errorOccured = true;
+        }
+
+
+        if (errorOccured)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", errorMessage, "OK");
+        }
+        else
+        {
+            Customer selectedCustomer = (Customer)customerPicker.SelectedItem;
+            DateTime selectedDateTime = dateTimeOptions[timePicker.SelectedIndex];
+            int selectedBooth = boothIdList[tablePicker.SelectedIndex];
+            string selectedBoothName = (string)tablePicker.SelectedItem;
+
+            await Navigation.PushAsync(new Reservation_confirm(selectedCustomer, selectedDateTime, selectedBooth, selectedBoothName));
+        }
     }
 
     //if timeslot is booked, error message will appear

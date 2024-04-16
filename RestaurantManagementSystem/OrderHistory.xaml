@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManagementSystem.OrderHistory">
+    <VerticalStackLayout>
+        <Label 
+            Text="Order History"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="32"
+            Padding="20,30,20,10"
+            Margin="20"/>
+
+        <Button x:Name="TakeOutHistory" Text="Take Out History" Clicked="TakeOutHistory_Clicked" TextColor="White" HorizontalOptions="CenterAndExpand" Padding="0,40" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="20"/>
+
+        <Button x:Name="ReservationHistory" Text="Reservation History" Clicked="ReservationHistory_Clicked" TextColor="White" HorizontalOptions="CenterAndExpand" Padding="0,40" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="20"/>
+
+        <Button x:Name="BackToMainPage" Text="Back to Main Page" Clicked="BackToMainPage_Clicked" TextColor="White" HorizontalOptions="CenterAndExpand" Padding="0,40" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="20"/>
+
+    </VerticalStackLayout>
+</ContentPage>

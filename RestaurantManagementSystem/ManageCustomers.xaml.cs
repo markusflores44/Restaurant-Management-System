@@ -114,4 +114,9 @@ public partial class ManageCustomers : ContentPage
     }
 
 
+    // Opens the Main Page
+    public async void BackToMainPage(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new MainPage());
+    }
 }

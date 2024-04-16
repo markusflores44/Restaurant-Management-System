@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagementSystem
 {
+    //Creates and edits the Customer
     public class Customer
     {
         private string _name;
@@ -30,7 +31,8 @@ namespace RestaurantManagementSystem
 
         }
 
-
+        // Parameterless constructor allows object initializers
+        public Customer() { }
 
         private int _customer_num;
         public int Customer_Num
@@ -39,14 +41,7 @@ namespace RestaurantManagementSystem
             set => _customer_num = value;
         }
 
-
-
-        // Parameterless constructor allows object initializers
-        public Customer()
-        {
-        }
-
-
+        //Displays the data in the selected. 
         public string FullDetails => $"ID: {Customer_Num}, Name: {_name}, Phone: {_phoneNumber}";
     }
 }
