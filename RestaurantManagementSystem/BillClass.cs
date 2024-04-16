@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagementSystem
 {
-    // implements abstract class Bill Template
-    public class BillClass : BillTemplate
+    // implements abstract class Bill Template. Used to set the Bill.
+    public class BillClass
     {
+        //Creates a list to store the items selected by the user
         private List<Item> _itemList;
         public List<Item> ItemList
         {
@@ -16,6 +17,7 @@ namespace RestaurantManagementSystem
             set => _itemList = value;
         }
 
+        //Creates the quanity list for each of Mains and Pops.
         private List<int> _quantityList;
         public List<int> QuantityList
         {
@@ -23,6 +25,7 @@ namespace RestaurantManagementSystem
             set => _quantityList = value;
         }
 
+        //Sets the value to the _itemList and _quantityList
         public BillClass() 
         {
             _itemList = new List<Item>();

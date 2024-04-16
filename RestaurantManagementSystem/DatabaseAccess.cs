@@ -10,16 +10,19 @@ namespace RestaurantManagementSystem
     // this class holds all methods for retrieving and deleting Database information
     public class DatabaseAccess
     {
-        public MySqlConnectionStringBuilder BuilderString { get; set; }
+        public MySqlConnectionStringBuilder BuilderString { get; set; } //Blank string which we pass the info to connect to the database to.
 
-        //May need to change.
+
+
         public DatabaseAccess()
         {
+
+            //Creates the connection to the database. Edit the password as needed.
             var builder = new MySqlConnectionStringBuilder
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "root",
+                Password = "1234",
                 Database = "mydb",
             };
 
@@ -28,25 +31,34 @@ namespace RestaurantManagementSystem
 
 
         // Saves new customers to the customer table
+        /* InsertRecordIfNotExists
+         * 
+         * Checks if a customer exists and adds the customer to the db if the record doesn't exist.
+         * 
+         * @Param Customer_Name The name of the customer being inserted into the data.
+         * @param Phone_Number The phone number associated with the customer.
+         
+         */
         public void InsertRecordIfNotExists(string Customer_Name, string Phone_Number)
         {
-            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString)) //Creates the Connection
             {
-                connection.Open();
+                connection.Open(); //Opens the connection
 
+                //Insert data into the db.
                 string query = "INSERT INTO Customer (Customer_Name, Phone_Number) value (@Customer_Name, @Phone_Number)"; using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Customer_Name", Customer_Name);
                     command.Parameters.AddWithValue("@Phone_Number", Phone_Number);
                     int result = command.ExecuteNonQuery();
-                    if (result < 0)
+                    if (result < 0) //If no data is entered display error message.
                     {
-                        Console.WriteLine("Error inserting data into the database.");
+                        Console.WriteLine("Error inserting data into the database."); 
                     }
 
                 }
 
-                connection.Close();
+                connection.Close(); //Closes connection
             }
         }
 
@@ -54,28 +66,30 @@ namespace RestaurantManagementSystem
         // method must be async to handle popup windows in maui (this so the program thread continues while waiting for the user to click ok on the popup menu)
         public async Task<bool> DeleteRecordIfExists(int customer_num)
         {
-            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString)) //Creates connection
             {
                 try
                 {
-                    connection.Open();
-                    string query = "DELETE FROM Customer WHERE `Customer#` = @customer_num";
+                    connection.Open(); //Opens the connection
+
+                    string query = "DELETE FROM Customer WHERE `Customer#` = @customer_num"; //Deletes the Customer information
+                    
                     using (var command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@customer_num", customer_num);
-                        int result = command.ExecuteNonQuery();
-                        return true;
+                        int result = command.ExecuteNonQuery(); //Error handling
+                        return true; //If the customer is deleted return true.
                     }
                 }
-                catch (MySqlException ex) when (ex.Message.Contains("a foreign key constraint fails"))
+                catch (MySqlException ex) when (ex.Message.Contains("a foreign key constraint fails")) //Displays error message
                 {
                     // away users to click ok
                     await Application.Current.MainPage.DisplayAlert("Error", "Cannot delete customer with active reservations.", "OK");
-                    return false;
+                    return false; //Returns  false if the customer is not deleted.
                 }
-                finally
+                finally 
                 {
-                    connection.Close();
+                    connection.Close(); //Closes connection.
                 }
             }
         }
@@ -88,39 +102,42 @@ namespace RestaurantManagementSystem
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
-                string sql = "SELECT `Customer#`, Customer_Name, Phone_Number FROM Customer";
+                string sql = "SELECT `Customer#`, Customer_Name, Phone_Number FROM Customer"; //Selects the customer#, customer_name, Phone_number from the database
                 MySqlCommand command = new MySqlCommand(sql, connection);
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlDataReader reader = command.ExecuteReader()) //Sets the values for the Customer Objects to the data retrieved.
                 {
+                    //
                     while (reader.Read())
                     {
                         customers.Add(new Customer
                         {
                             Customer_Num = reader.GetInt32(0),
-                            Name = reader.GetString(1),
+                            Name = reader.GetString(1), 
                             PhoneNumber = reader.GetString(2)
                         });
                     }
                 }
-                connection.Close();
+                connection.Close(); 
             }
-            return customers;
+            return customers; //Return the list of customers that was created.
         }
 
         //************END CUSTOMER METHODS*******************//
 
 
+        //Selects all the booths from the database.
         public Dictionary<int, string> getAllBooths()
         {
-            Dictionary<int, string> boothNames = new Dictionary<int, string>();
+            Dictionary<int, string> boothNames = new Dictionary<int, string>(); //Creates a dictionary for each boothNames
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
 
+                //Selects booth# and selects boothName from the booth table.
                 string sql = "SELECT `Booth#`, Booth_Name " +
                                "FROM booth";
                 MySqlCommand command = new MySqlCommand(sql, connection);
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlDataReader reader = command.ExecuteReader()) //Assigns the value retrieved from the db to the dictionary.
                 {
                     while (reader.Read())
                     {
@@ -129,9 +146,10 @@ namespace RestaurantManagementSystem
                 }
                 connection.Close();
             }
-            return boothNames;
+            return boothNames; //Returns the dictionary with the booth# and boothName.
         }
 
+        //Checks if the timeslot was taken. 
         public List<DateTime> takenTimeSlots(int boothID, DateTime date_time)
         {
             List<DateTime> takenTimeSlots = new List<DateTime>();
@@ -139,17 +157,19 @@ namespace RestaurantManagementSystem
             {
                 connection.Open();
 
+                //Selects the booth and the time that matches the parameters passed.
                 MySqlCommand command = connection.CreateCommand();
 
                 command.CommandText = "SELECT BSC.Date_Time " +
                                         "FROM Booth_Schedule BSC JOIN Booth BTH" +
                                         "                          ON BSC.`Booth#` = BTH.`Booth#`" +
                                        "WHERE BTH.`Booth#` = @selected_booth" +
-                                       "  AND DATE(BSC.Date_Time) = @selected_date";
+                                       "  AND DATE(BSC.Date_Time) = @selected_date"; 
 
                 command.Parameters.AddWithValue("@selected_booth", boothID);
                 command.Parameters.AddWithValue("@selected_date", date_time.Date);
-
+                
+                //If it matches the the parameters given add it to the takenTimeSlots list.
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -159,16 +179,17 @@ namespace RestaurantManagementSystem
                 }
                 connection.Close();
             }
-            return takenTimeSlots;
+            return takenTimeSlots; //A list of the taken time slots.
         }
 
+        //Confirms the reservation.
         public int confirmReservation(Customer customer, DateTime schedule, int boothID)
         {
             int reservationID = 0;
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
-
+                //Inserts into the data into the reservation table.
                 MySqlCommand command = connection.CreateCommand();
 
                 command.CommandText = "INSERT INTO booth_schedule (Date_Time, `Booth#`) " +
@@ -185,6 +206,7 @@ namespace RestaurantManagementSystem
 
                 int boothScheduleID = 0;
 
+                //Sets the boothScheduleID
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -193,14 +215,14 @@ namespace RestaurantManagementSystem
                     }
                 }
 
-
+                //inserts the data into the reservation table
                 command.CommandText = "INSERT INTO reservation (Booth_Schedule_ID, `Customer#`)" +
                                         "VALUES (@booth_scheduleID, @customer_number)";
                 command.Parameters.AddWithValue("@booth_scheduleID", boothScheduleID);
                 command.Parameters.AddWithValue("@customer_number", customer.Customer_Num);
                 command.ExecuteNonQuery();
 
-                command.CommandText = "SELECT LAST_INSERT_ID()";
+                command.CommandText = "SELECT LAST_INSERT_ID()"; //Selects the autoincremeted reservationID
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -214,7 +236,7 @@ namespace RestaurantManagementSystem
 
                 connection.Close();
             }
-            return reservationID;
+            return reservationID; //Returns the reservation ID
         }
 
 
@@ -388,10 +410,11 @@ namespace RestaurantManagementSystem
         //Fetch Rez
 
 
-        
+        //Selects the reservations and assigns them to the database
         public List<Reservation> FetchReservationItems()
         {
-            List<Reservation> reservation = new List<Reservation>();
+            List<Reservation> reservation = new List<Reservation>(); //List for the reservations
+            //Selects the data from the reservation where the bill# is null.
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
@@ -402,7 +425,7 @@ namespace RestaurantManagementSystem
                                                     "ON r.booth_schedule_id = bs.booth_schedule_id " +
                                                   "JOIN booth b " +
                                                     "ON bs.`Booth#` = b.`Booth#`" +
-                             " WHERE r.`Bill#` IS NULL";
+                             " WHERE r.`Bill#` IS NULL"; 
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -418,15 +441,15 @@ namespace RestaurantManagementSystem
                         });
                     }
 
-                    connection.Close();
+                    connection.Close(); //Close
                 }
             }
 
-            return reservation;
+            return reservation; // Returns the list of the reservations
 
         }
 
-
+        //Returns reservation history
         public Dictionary<Reservation, BillClass> GetReservationHistory()
         {
             Dictionary<Reservation, BillClass> reservation = new Dictionary<Reservation, BillClass>();
@@ -444,11 +467,12 @@ namespace RestaurantManagementSystem
                                                            "JOIN booth b " +
                                                              "ON bs.`Booth#` = b.`Booth#`" +
                                        "WHERE r.`Bill#` IS NOT NULL " +
-                                       "ORDER BY bs.date_time DESC";
+                                       "ORDER BY bs.date_time DESC"; //Select the reservation that bill# is not null
 
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
+                    //Assigns the value to the reservation objects
                     while (reader.Read())
                     {
                         Reservation reservationQuery = new Reservation
@@ -460,8 +484,9 @@ namespace RestaurantManagementSystem
                         };
 
                         
-                        BillClass reservationBill = new BillClass();
+                        BillClass reservationBill = new BillClass(); //Creates a Bill
 
+                        //Gets the data from the bill_items table that matches the bill#.
                         using (var secondConnection = new MySqlConnection(BuilderString.ConnectionString))
                         {
                             secondConnection.Open();
@@ -474,7 +499,7 @@ namespace RestaurantManagementSystem
                                                       " WHERE BI.`Bill#` = @bill_num";
                             itemCommand.Parameters.AddWithValue("@bill_num", reader.GetInt32(6));
 
-
+                            //Assigns the data into an Item.
                             using (MySqlDataReader itemReader = itemCommand.ExecuteReader())
                             {
                                 while (itemReader.Read())
@@ -490,13 +515,13 @@ namespace RestaurantManagementSystem
                         }
                         
 
-                        reservation.Add(reservationQuery, reservationBill);
+                        reservation.Add(reservationQuery, reservationBill); 
                     }
                 }
                 connection.Close();
             }
 
-            return reservation;
+            return reservation; //Returns the reservations and the bill associated with the reservations
 
         }
 
@@ -515,13 +540,14 @@ namespace RestaurantManagementSystem
                                             " WHERE BI.`Bill#` NOT IN (SELECT `Bill#`" +
                                                                         "FROM Reservation" +
                                                                       " WHERE `Bill#` IS NOT NULL)" +
-                                            " ORDER BY `Bill#` DESC";
+                                            " ORDER BY `Bill#` DESC"; //Selects the data from the bill_items table
 
                 using (MySqlDataReader itemReader = command.ExecuteReader())
                 {
                     BillClass takeOutBill = new BillClass();
                     int currentOrderId = -1;
 
+                    //Add the bill_items to the dictionary and add an order number to the dictionary
                     while (itemReader.Read())
                     {
                         if (currentOrderId != itemReader.GetInt32(0))
@@ -533,7 +559,7 @@ namespace RestaurantManagementSystem
                             currentOrderId = itemReader.GetInt32(0);
                             takeOutBill = new BillClass();
                         }
-                        
+                        //Creates item object and assigns the value
                         Item billItem = new Item();
                         billItem.Name = itemReader.GetString(1);
                         billItem.Price = itemReader.GetDouble(2);
@@ -541,6 +567,7 @@ namespace RestaurantManagementSystem
                         takeOutBill.AddItem(billItem, itemReader.GetInt32(3));
                     }
 
+                    //Insert the last record to takeOutOrder. If not -1 it means query returned something.
                     if (currentOrderId != -1)
                     {
                         takeOutOrder.Add(currentOrderId, takeOutBill);
@@ -550,7 +577,7 @@ namespace RestaurantManagementSystem
                 connection.Close();
             }
 
-            return takeOutOrder;
+            return takeOutOrder; //Returns the order number and the items associated with their quantity.
 
         }
     }

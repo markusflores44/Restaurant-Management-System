@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagementSystem
 {
+    //Creates and edits the Customer
     public class Customer
     {
         private string _name;
@@ -40,7 +41,7 @@ namespace RestaurantManagementSystem
             set => _customer_num = value;
         }
 
-
+        //Displays the data in the selected. 
         public string FullDetails => $"ID: {Customer_Num}, Name: {_name}, Phone: {_phoneNumber}";
     }
 }
