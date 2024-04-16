@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RestaurantManagementSystem
 {
     // implements abstract class Bill Template. Used to set the Bill.
-    public class BillClass
+    public class BillClass : BillTemplate
     {
         //Creates a list to store the items selected by the user
         private List<Item> _itemList;
