@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagementSystem
 {
-    public class BillClass
+    // implements abstract class Bill Template
+    public class BillClass : BillTemplate
     {
         private List<Item> _itemList;
         public List<Item> ItemList
@@ -22,9 +23,14 @@ namespace RestaurantManagementSystem
             set => _quantityList = value;
         }
 
-        public BillClass() { }
+        public BillClass() 
+        {
+            _itemList = new List<Item>();
+            _quantityList = new List<int>();
+        }
 
-        public void AddItem(Item newItem, int newQuantity)
+        //add item functionality with checking if it already exists
+        public override void AddItem(Item newItem, int newQuantity)
         {
             if (this.ItemList.Contains(newItem))
             {

@@ -44,6 +44,12 @@
                 Clicked="OnAddCustomerButtonClicked"
                 HorizontalOptions="CenterAndExpand" WidthRequest="400" TextColor="#F3F3F3" Padding="0,40" Margin="0,0,0,0" BackgroundColor="#BD0B0B" FontSize="20"/>
 
+            <Button
+                x:Name="OrderHistoryBtn"
+                Text="Order History"
+                Clicked="OrderHistoryButtonClicked"
+                HorizontalOptions="CenterAndExpand" WidthRequest="400" TextColor="#F3F3F3" Padding="0,40" Margin="0,0,0,0" BackgroundColor="#BD0B0B" FontSize="20"/>
+
         </VerticalStackLayout>
     </ScrollView>
 

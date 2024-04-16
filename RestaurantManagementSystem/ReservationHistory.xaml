@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestaurantManagementSystem.ReservationHistory">
+    <Grid RowDefinitions="100, Auto, *"
+      ColumnDefinitions=".05*, .25*, .25*, .05*"
+      Padding="10"
+      RowSpacing="10"
+      ColumnSpacing="10">
+
+        <Button Grid.Column="0" 
+            Text="Back" 
+            Clicked="BackToMainPage" 
+            Margin="5" 
+            HeightRequest="5" 
+            TextColor="#F3F3F3" 
+            BackgroundColor="#BD0B0B">
+        </Button>
+
+        <Label 
+            Text="Reservation History"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="32"
+            Grid.ColumnSpan="4"/>
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1"
+            ItemsSource="{Binding display}"
+                SelectionMode="None"
+                        x:Name="HistoryCollection">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    <SwipeView>
+                        <Grid Padding="0, 5">
+                            <Frame>
+                                <Label Text="{Binding .}"
+                               FontSize="16"/>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

@@ -42,7 +42,14 @@ namespace RestaurantManagementSystem
             Customer = paramCustomer;
             BoothName = paramBoothName;
         }
-        public string FullDetails => $"Booking Number : {_bookingNumber} Reservation Time: {_schedule}, Reservation Name:{_customer}, Reservation Table:{_boothName}";
-        public Reservation(){}
+
+        public Reservation() { }
+
+        public string FullDetails => $"{_schedule.ToString("M/d/yyyy")} {_boothName} at {_schedule.Hour}:00 for: {_customer.Name}";
+
+        public override string ToString()
+        {
+            return $"{_schedule.ToString("M/d/yyyy")} {_boothName} at {_schedule.Hour}:00 for: {_customer.Name}";
+        }
     }
 }

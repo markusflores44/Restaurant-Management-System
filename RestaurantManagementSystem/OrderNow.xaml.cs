@@ -1,7 +1,6 @@
 using MySqlConnector;
 
 namespace RestaurantManagementSystem;
-//Working on
 public partial class OrderNow : ContentPage
 {
 
@@ -36,15 +35,26 @@ public partial class OrderNow : ContentPage
     //click button event, collect data from ordernow to orderdisplay
     private async void OnConfirmOrderButtonClicked(object sender, EventArgs e)
     {
-        Item selectedItem1 = (Item)MenuMainsPicker.SelectedItem;
-        Item selectedItem2 = (Item)MenuPopsPicker.SelectedItem;
-        double totalcost = Convert.ToDouble(totalPrice.Text);
-        int mainsquantity = Convert.ToInt32(MainsItemsNumber.Text);
-        int popsquantity = Convert.ToInt32(PopsItemsNumber.Text);
+        //Checks if all values have been populated before confirming the order
+        if (ReservationSearchPicker.SelectedIndex == -1
+            || MenuMainsPicker.SelectedIndex == -1
+            || MenuPopsPicker.SelectedIndex == -1)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "Please fill all fields before confirming", "OK");
+        }
+        else
+        {
+            Item selectedItem1 = (Item)MenuMainsPicker.SelectedItem;
+            Item selectedItem2 = (Item)MenuPopsPicker.SelectedItem;
+            double totalcost = Convert.ToDouble(totalPrice.Text);
+            int mainsquantity = Convert.ToInt32(MainsItemsNumber.Text);
+            int popsquantity = Convert.ToInt32(PopsItemsNumber.Text);
 
-        Reservation reservation = (Reservation)ReservationSearchPicker.SelectedItem;
+            Reservation reservation = (Reservation)ReservationSearchPicker.SelectedItem;
 
-        await Navigation.PushAsync(new OrderDisplay(selectedItem1, mainsquantity, selectedItem2, popsquantity, totalcost, reservation));
+            await Navigation.PushAsync(new OrderDisplay(selectedItem1, mainsquantity, selectedItem2, popsquantity, totalcost, reservation));
+        }
+
     }
 
     double total_Price = 0;

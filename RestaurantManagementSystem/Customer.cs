@@ -30,20 +30,14 @@ namespace RestaurantManagementSystem
 
         }
 
-
+        // Parameterless constructor allows object initializers
+        public Customer() { }
 
         private int _customer_num;
         public int Customer_Num
         {
             get => _customer_num;
             set => _customer_num = value;
-        }
-
-
-
-        // Parameterless constructor allows object initializers
-        public Customer()
-        {
         }
 
 

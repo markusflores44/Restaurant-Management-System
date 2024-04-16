@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestaurantManagementSystem.OrderNow"
-             Title="OrderNow">
+             x:Class="RestaurantManagementSystem.OrderNow">
     <VerticalStackLayout>
+
+        <Label 
+            Text="Reservation"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            FontSize="32" Padding="20,30,20,10"/>
+
         <Picker x:Name="ReservationSearchPicker" WidthRequest="400" Title="Search for reservation here" Margin="5" SelectedIndexChanged="ReservationResearch_SelectedIndexChanged"></Picker>
 
         <Label 
             Text="Menu"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
-            FontSize="40" Padding="20,50,20,10"/>
+            FontSize="32" Padding="20,50,20,10"/>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
             <Picker x:Name="MenuMainsPicker" WidthRequest="400" Title="Please select your mains" Margin="5" SelectedIndexChanged="MenuMainsPicker_SelectedIndexChanged"></Picker>
-            <Button Text="-" Clicked="OnMinusMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="0" x:Name="MainsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="+" Clicked="OnAddMainsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="-" Clicked="OnMinusMainsItemsClicked" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="MainsItemsNumber" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddMainsItemsClicked" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
             <Picker x:Name="MenuPopsPicker" WidthRequest="400" Title="Please select your pops" Margin="5" SelectedIndexChanged="MenuPopsPicker_SelectedIndexChanged"></Picker>
-            <Button Text="-" Clicked="OnMinusPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="0" x:Name="PopsItemsNumber" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
-            <Button Text="+" Clicked="OnAddPopsItemsClicked" Margin="5" HeightRequest="5" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="-" Clicked="OnMinusPopsItemsClicked" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="0" x:Name="PopsItemsNumber" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
+            <Button Text="+" Clicked="OnAddPopsItemsClicked" Margin="5" HeightRequest="5" TextColor="#F3F3F3" BackgroundColor="#BD0B0B"></Button>
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
@@ -32,8 +38,8 @@
         </HorizontalStackLayout>
 
         <HorizontalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-            <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
-            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
+            <Button Text="Back to Main Page" HorizontalOptions="CenterAndExpand" WidthRequest="400" TextColor="#F3F3F3" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnBackToMainButtonClicked"/>
+            <Button Text="Confirm" HorizontalOptions="CenterAndExpand" WidthRequest="400" TextColor="#F3F3F3" BackgroundColor="#BD0B0B" FontSize="20" Margin="40" Clicked="OnConfirmOrderButtonClicked"/>
         </HorizontalStackLayout>
 
 

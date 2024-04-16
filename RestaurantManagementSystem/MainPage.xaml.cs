@@ -13,6 +13,8 @@ namespace RestaurantManagementSystem
             InitializeComponent();
         }
 
+        // Opens the respective pages based on the button clicked
+
         private async void OnReservationButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Reservation_input());
@@ -31,6 +33,11 @@ namespace RestaurantManagementSystem
         private async void OnOrderNowButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new OrderNow());
+        }
+
+        private async void OrderHistoryButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OrderHistory());
         }
 
     }

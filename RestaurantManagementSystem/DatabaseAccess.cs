@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//Working ON Latest Apr 4, 2024
 namespace RestaurantManagementSystem
 {
     // this class holds all methods for retrieving and deleting Database information
@@ -20,7 +19,7 @@ namespace RestaurantManagementSystem
             {
                 Server = "localhost",
                 UserID = "root",
-                Password = "password",
+                Password = "root",
                 Database = "mydb",
             };
 
@@ -186,7 +185,6 @@ namespace RestaurantManagementSystem
 
                 int boothScheduleID = 0;
 
-                //NOT WORKING???(What is createCommand???? Reader is Null!
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -196,11 +194,10 @@ namespace RestaurantManagementSystem
                 }
 
 
-                command.CommandText = "INSERT INTO reservation (Booth_Schedule_ID, `Customer#`, Number_of_Customers)" +
-                                        "VALUES (@booth_scheduleID, @customer_number, @num_of_customers)";
+                command.CommandText = "INSERT INTO reservation (Booth_Schedule_ID, `Customer#`)" +
+                                        "VALUES (@booth_scheduleID, @customer_number)";
                 command.Parameters.AddWithValue("@booth_scheduleID", boothScheduleID);
                 command.Parameters.AddWithValue("@customer_number", customer.Customer_Num);
-                command.Parameters.AddWithValue("@num_of_customers", 0);
                 command.ExecuteNonQuery();
 
                 command.CommandText = "SELECT LAST_INSERT_ID()";
@@ -220,134 +217,71 @@ namespace RestaurantManagementSystem
             return reservationID;
         }
 
-        //Creates a single table and saves the mains and pop to the database.
-        int sharedBillNum = 0;
 
-        /*SaveMainToBill_items
-         * Saves the mains to the database under the bill_items table.
-         * @param quantity The quantity of each item.
-         * @param item_name The name of the main that is being saved.
-         
-         */
-        public void SaveMainToBill_Items(int quantity, string item_name)
+        public int createBill(int reservation)
         {
-
-            //Placeholder Variables
-            int item_num = 1001;
             int bill_num = 0;
 
-            //Execute only if the quantity is not 0. Else do not save any data.
-            if (quantity != 0)
+            //Opens connection to the database.
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
-                //Opens the connection to the database.
-                using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+
+                //Creates new bill table using the autoincrement function in sql.
+                command.CommandText = "INSERT INTO bill() VALUES ()"; 
+                command.Parameters.AddWithValue("@`bill#`", bill_num);
+                command.ExecuteNonQuery();
+
+
+                //Grab the bill_num and assign it to the bill_num Variable.
+                command.CommandText = "SELECT LAST_INSERT_ID()";
+
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-
-                    //Creates new bill table using the autoincrement function in sql.
-                    string billNum = "INSERT INTO bill() VALUES ()"; using (var command = new MySqlCommand(billNum, connection))
+                    while (reader.Read())
                     {
+                        bill_num = Convert.ToInt32(reader[0]);
 
-                        command.Parameters.AddWithValue("@`bill#`", bill_num);
-
-
-                        command.ExecuteNonQuery();
                     }
-
-                    //Grab the bill_num and assign it to the bill_num Variable.
-                    string query = "SELECT LAST_INSERT_ID()";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                bill_num = Convert.ToInt32(reader[0]);
-
-                            }
-                        }
-                    }
-
-                    //Selects the item# that matches the selected main.
-                    string item = $"SELECT `item#` FROM menu_item WHERE item_name = @item_name";
-                    using (MySqlCommand command = new MySqlCommand(item, connection))
-                    {
-                        command.Parameters.AddWithValue("@item_name", item_name);
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-
-                                item_num = Convert.ToInt32(reader[0]);
-                            }
-                        }
-                    }
-
-                    //Inserts the data into the bill_items table.
-                    string save = "INSERT INTO bill_items(`Item#`, `Bill#`, Quantity) VALUES (@`item#`, @`bill#`, @quantity)"; using (var command = new MySqlCommand(save, connection))
-                    {
-                        command.Parameters.AddWithValue("@`item#`", item_num);
-                        command.Parameters.AddWithValue("@`bill#`", bill_num);
-                        command.Parameters.AddWithValue("@quantity", quantity);
-
-                        command.ExecuteNonQuery();
-                    }
-
-                    sharedBillNum = bill_num; //Assigns value to sharedBillNum variable.
-                    connection.Close(); //Closes connection
                 }
+
+                if (reservation != -1)
+                {
+                    command.CommandText = "UPDATE Reservation " +
+                                             "SET `Bill#` = @bill_num " +
+                                           "WHERE `Booking#` = @booking_num";
+
+                    command.Parameters.AddWithValue("@bill_num", bill_num);
+                    command.Parameters.AddWithValue("@booking_num", reservation);
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close(); //Closes Connection
             }
+            return bill_num;
         }
-        /*SavePopToBill_items
-         * Saves the pop items to the item_bill table.
+
+        /*SaveToBill_items
+         * Saves the items to the item_bill table.
          * 
-         * @param The quantity of the pop ordered.
-         * @param item_name The name of the pop orderded
+         * @param The quantity of the ordered.
+         * @param item_name The name of the orderded
+         * @param bill number associated to the order
          */
-        public void SavePopToBill_Items(int quantity, string item_name)
+        public void SaveToBill_Items(int quantity, string item_name, int bill_num)
         {
             //Execute if the quantity of pops is not 0. Else do not save any data.
             if (quantity != 0)
             {
                 //Placeholder Variables
                 int item_num = 1001;
-                int bill_num = sharedBillNum; //Assigns the bill_num var to the sharedBillNum to be on the same bill as the Mains.
 
                 //Opens connection to the database.
                 using (var connection = new MySqlConnection(BuilderString.ConnectionString))
                 {
                     connection.Open();
 
-                    //ERROR HANDLING: If mains quantity is 0. Bill_num was not created so creates it here.
-                    if (bill_num == 0)
-                    {
-
-                        //Creates new bill table using the autoincrement function in sql.
-                        string billNum = "INSERT INTO bill() VALUES ()"; using (var command = new MySqlCommand(billNum, connection))
-                        {
-
-                            command.Parameters.AddWithValue("@`bill#`", bill_num);
-
-
-                            command.ExecuteNonQuery();
-                        }
-
-                        //Grab the bill_num and assign it to the bill_num Variable.
-                        string query = "SELECT LAST_INSERT_ID()";
-                        using (MySqlCommand command = new MySqlCommand(query, connection))
-                        {
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    bill_num = Convert.ToInt32(reader[0]);
-
-                                }
-                            }
-                        }
-                    }
 
                     //Grabs the item# that correlates to the pop selected.
                     string item = $"SELECT `item#` FROM menu_item WHERE item_name = @item_name";
@@ -366,7 +300,8 @@ namespace RestaurantManagementSystem
                     }
 
                     //Insets the data into bill_items table
-                    string save = "INSERT INTO bill_items(`Item#`, `Bill#`, Quantity) VALUES (@`item#`, @`bill#`, @quantity)"; using (var command = new MySqlCommand(save, connection))
+                    string save = "INSERT INTO bill_items(`Item#`, `Bill#`, Quantity) VALUES (@`item#`, @`bill#`, @quantity)"; 
+                    using (var command = new MySqlCommand(save, connection))
                     {
                         command.Parameters.AddWithValue("@`item#`", item_num);
                         command.Parameters.AddWithValue("@`bill#`", bill_num);
@@ -380,8 +315,6 @@ namespace RestaurantManagementSystem
             }
 
         }
-        //Creates Item class(ASK WHY??)
-
 
         /*FetchMainsItems
         * Generates the data from the menu_item table for the Mains Picker.
@@ -455,17 +388,21 @@ namespace RestaurantManagementSystem
         //Fetch Rez
 
 
-        List<Reservation> reservation = new List<Reservation>();
+        
         public List<Reservation> FetchReservationItems()
         {
+            List<Reservation> reservation = new List<Reservation>();
             using (var connection = new MySqlConnection(BuilderString.ConnectionString))
             {
                 connection.Open();
-                string sql = "SELECT r.`Booking#`, bs.date_time, c.customer_name, b.booth_name " +
-             "FROM reservation r " +
-             "JOIN customer c ON r.`Customer#` = c.`Customer#` " +
-             "JOIN booth_schedule bs ON r.booth_schedule_id = bs.booth_schedule_id " +
-             "JOIN booth b ON bs.`Booth#` = b.`Booth#`";
+                string sql = "SELECT r.`Booking#`, bs.date_time, c.`customer#`, c.customer_name, c.phone_number, b.booth_name " +
+                               "FROM reservation r JOIN customer c " +
+                                                    "ON r.`Customer#` = c.`Customer#` " +
+                                                  "JOIN booth_schedule bs " +
+                                                    "ON r.booth_schedule_id = bs.booth_schedule_id " +
+                                                  "JOIN booth b " +
+                                                    "ON bs.`Booth#` = b.`Booth#`" +
+                             " WHERE r.`Bill#` IS NULL";
                 MySqlCommand command = new MySqlCommand(sql, connection);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -475,17 +412,145 @@ namespace RestaurantManagementSystem
                         {
                            BookingNumber = reader.GetInt32(0),
                             Schedule = reader.GetDateTime(1),
-                            Customer = new Customer { Name = reader.GetString(2) },
-                            BoothName = reader.GetString(3)
+                            Customer = new Customer (reader.GetInt32(2), reader.GetString(3), reader.GetString(4)),
+                            BoothName = reader.GetString(5)
 
-                        }); ;
+                        });
                     }
 
                     connection.Close();
                 }
-
-                return reservation;
             }
+
+            return reservation;
+
+        }
+
+
+        public Dictionary<Reservation, BillClass> GetReservationHistory()
+        {
+            Dictionary<Reservation, BillClass> reservation = new Dictionary<Reservation, BillClass>();
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = connection.CreateCommand();
+
+                command.CommandText = "SELECT r.`Booking#`, bs.date_time, c.`customer#`, c.customer_name, c.phone_number, b.booth_name, r.`Bill#` " +
+                                        "FROM reservation r JOIN customer c " +
+                                                             "ON r.`Customer#` = c.`Customer#` " +
+                                                           "JOIN booth_schedule bs " +
+                                                             "ON r.booth_schedule_id = bs.booth_schedule_id " +
+                                                           "JOIN booth b " +
+                                                             "ON bs.`Booth#` = b.`Booth#`" +
+                                       "WHERE r.`Bill#` IS NOT NULL " +
+                                       "ORDER BY bs.date_time DESC";
+
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Reservation reservationQuery = new Reservation
+                        {
+                            BookingNumber = reader.GetInt32(0),
+                            Schedule = reader.GetDateTime(1),
+                            Customer = new Customer(reader.GetInt32(2), reader.GetString(3), reader.GetString(4)),
+                            BoothName = reader.GetString(5)
+                        };
+
+                        
+                        BillClass reservationBill = new BillClass();
+
+                        using (var secondConnection = new MySqlConnection(BuilderString.ConnectionString))
+                        {
+                            secondConnection.Open();
+
+                            MySqlCommand itemCommand = secondConnection.CreateCommand();
+
+                            itemCommand.CommandText = "SELECT MI.Item_Name, MI.Item_Price, BI.Quantity" +
+                                                       " FROM Bill_Items BI JOIN Menu_Item MI" +
+                                                                            " ON BI.`Item#` = MI.`Item#`" +
+                                                      " WHERE BI.`Bill#` = @bill_num";
+                            itemCommand.Parameters.AddWithValue("@bill_num", reader.GetInt32(6));
+
+
+                            using (MySqlDataReader itemReader = itemCommand.ExecuteReader())
+                            {
+                                while (itemReader.Read())
+                                {
+                                    Item billItem = new Item();
+                                    billItem.Name = itemReader.GetString(0);
+                                    billItem.Price = itemReader.GetDouble(1);
+
+                                    reservationBill.AddItem(billItem, itemReader.GetInt32(2));
+                                }
+                            }
+                            secondConnection.Close();
+                        }
+                        
+
+                        reservation.Add(reservationQuery, reservationBill);
+                    }
+                }
+                connection.Close();
+            }
+
+            return reservation;
+
+        }
+
+        public Dictionary<int, BillClass> GetTakeOutHistory()
+        {
+            Dictionary<int, BillClass> takeOutOrder = new Dictionary<int, BillClass>();
+            using (var connection = new MySqlConnection(BuilderString.ConnectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = connection.CreateCommand();
+
+                command.CommandText = "SELECT BI.`Bill#`, MI.Item_Name, MI.Item_Price, BI.Quantity" +
+                                            " FROM Bill_Items BI JOIN Menu_Item MI" +
+                                                                " ON BI.`Item#` = MI.`Item#`" +
+                                            " WHERE BI.`Bill#` NOT IN (SELECT `Bill#`" +
+                                                                        "FROM Reservation" +
+                                                                      " WHERE `Bill#` IS NOT NULL)" +
+                                            " ORDER BY `Bill#` DESC";
+
+                using (MySqlDataReader itemReader = command.ExecuteReader())
+                {
+                    BillClass takeOutBill = new BillClass();
+                    int currentOrderId = -1;
+
+                    while (itemReader.Read())
+                    {
+                        if (currentOrderId != itemReader.GetInt32(0))
+                        {
+                            if (currentOrderId != -1)
+                            {
+                                takeOutOrder.Add(currentOrderId, takeOutBill);
+                            }
+                            currentOrderId = itemReader.GetInt32(0);
+                            takeOutBill = new BillClass();
+                        }
+                        
+                        Item billItem = new Item();
+                        billItem.Name = itemReader.GetString(1);
+                        billItem.Price = itemReader.GetDouble(2);
+
+                        takeOutBill.AddItem(billItem, itemReader.GetInt32(3));
+                    }
+
+                    if (currentOrderId != -1)
+                    {
+                        takeOutOrder.Add(currentOrderId, takeOutBill);
+                    }
+                }
+                    
+                connection.Close();
+            }
+
+            return takeOutOrder;
 
         }
     }

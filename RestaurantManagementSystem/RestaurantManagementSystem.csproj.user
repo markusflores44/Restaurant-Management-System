@@ -6,19 +6,22 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="Bill.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
     <MauiXaml Update="ManageCustomers.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="OrderDisplay.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="OrderHistory.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="OrderMain.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="OrderNow.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="ReservationHistory.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Reservation_confirm.xaml">
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="Reservation_order.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="TakeOutHistory.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>
